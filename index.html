@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoHarvest | Next-Gen Smart Agriculture & Sustainable Farming</title>
+  <meta name="description" content="EcoHarvest combines IoT soil sensors, multispectral drone imagery, and predictive AI to optimize crop yield and water conservation in sustainable farming.">
+  <meta name="keywords" content="smart agriculture, sustainable farming, precision irrigation, AgTech, IoT agriculture, drone crop monitoring">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EcoHarvest | Smart Agriculture & Sustainable Farming">
+  <meta property="og:description" content="Empowering modern growers with AI telemetry, autonomous irrigation, and regenerative soil science.">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            lime: {
+              400: '#a3e635',
+              500: '#84cc16',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP 3 & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#03140e] text-emerald-50 antialiased selection:bg-emerald-500 selection:text-black relative">
+
+  <!-- Background Ambient Glow & Grid -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none opacity-40 z-0"></div>
+  <div class="fixed top-[-10%] left-[-10%] w-[600px] h-[600px] ambient-glow-1 rounded-full pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[700px] h-[700px] ambient-glow-2 rounded-full pointer-events-none z-0"></div>
+
+  <!-- STICKY NAVIGATION BAR -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5 bg-transparent border-b border-emerald-500/10">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-lime-500 flex items-center justify-center text-slate-950 shadow-lg shadow-emerald-500/25 group-hover:scale-105 group-hover:shadow-emerald-400/40 transition-all duration-300">
+          <i data-lucide="sprout" class="w-6 h-6 stroke-[2.3] transition-transform duration-300 group-hover:rotate-6"></i>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-lime-400 rounded-full border-2 border-[#03140e] animate-ping"></span>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-lime-400 rounded-full border-2 border-[#03140e]"></span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold tracking-tight font-heading text-white flex items-center gap-1.5 leading-none">
+            Eco<span class="text-emerald-400">Harvest</span>
+          </span>
+          <span class="text-[10px] tracking-widest uppercase text-emerald-400/80 font-semibold mt-1">Smart Ag &amp; BioTech</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-emerald-200/80">
+        <a href="#solutions" class="nav-link-custom hover:text-white transition-colors">Solutions</a>
+        <a href="#telemetry" class="nav-link-custom hover:text-white transition-colors flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          IoT Telemetry
+        </a>
+        <a href="#calculator" class="nav-link-custom hover:text-white transition-colors">Impact Calculator</a>
+        <a href="#diagnostics" class="nav-link-custom hover:text-white transition-colors flex items-center gap-1.5 text-lime-300 font-semibold">
+          <i data-lucide="microscope" class="w-3.5 h-3.5"></i>
+          AI Diagnostics
+        </a>
+        <a href="#technology" class="nav-link-custom hover:text-white transition-colors">Technology</a>
+        <a href="#impact" class="nav-link-custom hover:text-white transition-colors">Impact Metrics</a>
+        <a href="#testimonials" class="nav-link-custom hover:text-white transition-colors">Grower Stories</a>
+      </nav>
+
+      <!-- Header CTAs & Auth Controls -->
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- Telemetry Status Quick Link -->
+        <a href="#telemetry" class="text-xs font-semibold text-emerald-300/80 px-3 py-2 rounded-xl hover:text-white hover:bg-emerald-950/60 border border-transparent hover:border-emerald-700/40 transition-all flex items-center gap-1.5">
+          <i data-lucide="radio" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Live Field Status</span>
+        </a>
+
+        <!-- LOGGED-OUT STATE BUTTONS -->
+        <div id="nav-auth-logged-out" class="flex items-center gap-2 sm:gap-3">
+          <a href="auth.html" class="text-xs font-semibold text-emerald-300 hover:text-white px-3 py-2 rounded-xl border border-emerald-700/40 hover:border-emerald-500/60 bg-emerald-950/40 hover:bg-emerald-900/50 transition-all flex items-center gap-1.5" title="Open full authentication portal">
+            <i data-lucide="shield" class="w-3.5 h-3.5 text-lime-400"></i>
+            <span class="hidden sm:inline">Auth Portal</span>
+          </a>
+          <button id="nav-signin-btn" class="open-auth-modal text-xs font-semibold text-emerald-200 px-3.5 py-2 rounded-xl hover:text-white hover:bg-emerald-900/40 border border-emerald-700/40 transition-all flex items-center gap-2 cursor-pointer">
+            <i data-lucide="log-in" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>Sign In</span>
+          </button>
+          <button class="open-demo-modal btn-primary-cta px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-400 via-emerald-500 to-lime-500 text-slate-950 font-bold text-xs shadow-md flex items-center gap-2">
+            <span>Request Demo</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 stroke-[2.5] cta-arrow"></i>
+          </button>
+        </div>
+
+        <!-- LOGGED-IN STATE BUTTONS (Initially Hidden) -->
+        <div id="nav-auth-logged-in" class="hidden items-center gap-3 relative">
+          <!-- Open Dashboard Button -->
+          <button id="nav-dashboard-btn" class="px-4 py-2 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 hover:border-emerald-400/60 transition-all text-xs font-bold flex items-center gap-2 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>Dashboard</span>
+          </button>
+
+          <!-- User Profile Chip & Dropdown Trigger -->
+          <div class="relative">
+            <button id="user-chip-btn" class="flex items-center gap-2.5 p-1.5 pr-3 rounded-xl bg-[#021c13] border border-emerald-700/50 hover:border-emerald-500/60 transition-all text-left">
+              <div id="user-avatar-initials" class="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-500 to-lime-500 text-slate-950 font-bold text-xs flex items-center justify-center">
+                SJ
+              </div>
+              <div class="hidden xl:flex flex-col">
+                <span id="user-display-name" class="text-xs font-semibold text-white leading-tight">Dr. Sarah Jenkins</span>
+                <span id="user-display-farm" class="text-[10px] text-emerald-400/80 leading-tight">GreenMeadow Biofarms</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-emerald-400"></i>
+            </button>
+
+            <!-- Profile Dropdown Menu -->
+            <div id="user-dropdown-menu" class="user-dropdown hidden absolute right-0 mt-2 w-64 glass-card p-4 rounded-2xl border border-emerald-500/30 shadow-2xl z-50 space-y-3">
+              <div class="pb-3 border-b border-emerald-800/40">
+                <div id="dropdown-user-name" class="text-sm font-bold text-white">Dr. Sarah Jenkins</div>
+                <div id="dropdown-user-email" class="text-xs text-emerald-300/70 truncate">demo@ecoharvest.io</div>
+                <div id="dropdown-user-farm" class="text-[11px] text-emerald-400 mt-1 flex items-center gap-1">
+                  <i data-lucide="sprout" class="w-3 h-3"></i>
+                  <span>GreenMeadow Biofarms (1,250 Acres)</span>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <button id="dropdown-open-dashboard" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-emerald-200 hover:text-white hover:bg-emerald-900/40 flex items-center gap-2 transition-colors">
+                  <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>Active Sensor Telemetry</span>
+                </button>
+                <button class="open-demo-modal w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-emerald-200 hover:text-white hover:bg-emerald-900/40 flex items-center gap-2 transition-colors">
+                  <i data-lucide="life-buoy" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>Agronomist Support</span>
+                </button>
+              </div>
+
+              <div class="pt-2 border-t border-emerald-800/40">
+                <button id="auth-signout-btn" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold text-rose-300 hover:text-white hover:bg-rose-950/50 border border-transparent hover:border-rose-800/40 flex items-center gap-2 transition-colors">
+                  <i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-400"></i>
+                  <span>Sign Out</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-emerald-400 p-2.5 rounded-xl hover:bg-emerald-900/40 focus:outline-none transition-colors border border-emerald-800/30" aria-label="Toggle navigation menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass-card mx-4 mt-3 p-6 rounded-2xl border border-emerald-500/20 shadow-2xl flex flex-col gap-4">
+      <a href="#solutions" class="mobile-nav-link text-emerald-100 font-medium py-2 border-b border-emerald-900/40">Solutions</a>
+      <a href="#telemetry" class="mobile-nav-link text-emerald-100 font-medium py-2 border-b border-emerald-900/40 flex items-center justify-between">
+        <span>IoT Field Telemetry</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      </a>
+      <a href="#calculator" class="mobile-nav-link text-emerald-100 font-medium py-2 border-b border-emerald-900/40">Impact Calculator</a>
+      <a href="#diagnostics" class="mobile-nav-link text-emerald-100 font-medium py-2 border-b border-emerald-900/40 flex items-center justify-between">
+        <span class="text-lime-300">AI Crop Diagnostics</span>
+        <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/40 font-mono">NEW</span>
+      </a>
+      <a href="#technology" class="mobile-nav-link text-emerald-100 font-medium py-2 border-b border-emerald-900/40">Technology</a>
+      <a href="#impact" class="mobile-nav-link text-emerald-100 font-medium py-2 border-b border-emerald-900/40">Verified Metrics</a>
+      <a href="#testimonials" class="mobile-nav-link text-emerald-100 font-medium py-2 border-b border-emerald-900/40">Grower Stories</a>
+
+      <!-- Mobile Auth Buttons -->
+      <div id="mobile-auth-logged-out" class="flex flex-col gap-2 pt-2 border-t border-emerald-900/40">
+        <button class="open-auth-modal w-full py-2.5 rounded-xl bg-emerald-950/70 text-emerald-200 border border-emerald-700/50 font-semibold text-sm flex items-center justify-center gap-2">
+          <i data-lucide="log-in" class="w-4 h-4 text-emerald-400"></i>
+          <span>Sign In</span>
+        </button>
+        <button class="open-demo-modal btn-primary-cta w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 font-bold text-sm flex items-center justify-center gap-2">
+          <span>Request Field Pilot</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 cta-arrow"></i>
+        </button>
+      </div>
+
+      <div id="mobile-auth-logged-in" class="hidden flex-col gap-2 pt-2 border-t border-emerald-900/40">
+        <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40 flex items-center gap-3">
+          <div id="mobile-user-avatar" class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-lime-500 text-slate-950 font-bold text-xs flex items-center justify-center">
+            SJ
+          </div>
+          <div>
+            <div id="mobile-user-name" class="text-xs font-bold text-white">Dr. Sarah Jenkins</div>
+            <div id="mobile-user-farm" class="text-[10px] text-emerald-400">GreenMeadow Biofarms</div>
+          </div>
+        </div>
+        <button id="mobile-dashboard-btn" class="w-full py-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold text-sm flex items-center justify-center gap-2">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 text-emerald-400"></i>
+          <span>Open Field Dashboard</span>
+        </button>
+        <button id="mobile-signout-btn" class="w-full py-2.5 rounded-xl bg-rose-950/40 text-rose-300 border border-rose-800/40 font-semibold text-xs flex items-center justify-center gap-2">
+          <i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-400"></i>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-28 sm:pt-36">
+
+    <!-- HERO SECTION -->
+    <section class="relative max-w-7xl mx-auto px-6 sm:px-8 pb-24 pt-6 overflow-hidden lg:overflow-visible">
+      
+      <!-- FLOATING SUBTLE LEAF & CROP VECTOR GRAPHICS WITH KEYFRAME ANIMATIONS -->
+      <div class="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+        <!-- Floating Leaf 1: Top Left -->
+        <div class="absolute -top-6 left-4 md:left-12 anim-float-1 opacity-25 text-emerald-400 drop-shadow-[0_0_15px_rgba(16,185,129,0.35)]">
+          <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+
+        <!-- Floating Wheat / Crop Ear 2: Top Right -->
+        <div class="absolute top-8 right-10 lg:right-24 anim-float-2 opacity-20 text-lime-400 drop-shadow-[0_0_18px_rgba(132,204,22,0.3)]">
+          <svg width="78" height="78" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m2 22 10-10"/>
+            <path d="M16 8a4 4 0 0 0-4-4c0 2 2 4 4 4Z"/>
+            <path d="M18 10a4 4 0 0 0-4-4c0 2 2 4 4 4Z"/>
+            <path d="M20 12a4 4 0 0 0-4-4c0 2 2 4 4 4Z"/>
+            <path d="M14 6a4 4 0 0 0-4-4c0 2 2 4 4 4Z"/>
+            <path d="M12 14a4 4 0 0 0 4 4c-2 0-4-2-4-4Z"/>
+            <path d="M10 16a4 4 0 0 0 4 4c-2 0-4-2-4-4Z"/>
+          </svg>
+        </div>
+
+        <!-- Floating Sprout Seedling 3: Mid Left -->
+        <div class="absolute top-1/2 -left-6 md:left-2 anim-float-3 opacity-20 text-emerald-300 drop-shadow-[0_0_12px_rgba(52,211,153,0.3)]">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 20h10"/>
+            <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4.1 5.5.8Z"/>
+            <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2Z"/>
+          </svg>
+        </div>
+
+        <!-- Floating Botanic Branch 4: Bottom Center-Right -->
+        <div class="absolute bottom-6 right-1/3 anim-float-4 opacity-15 text-lime-300">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/>
+            <path d="M12 12c-2.5 0-5-2.5-5-5 2.5 0 5 2.5 5 5Z"/>
+            <path d="M12 12c0 2.5 2.5 5 5 5 0-2.5-2.5-5-5-5Z"/>
+          </svg>
+        </div>
+
+        <!-- Floating Delicate Leaf 5: Bottom Left -->
+        <div class="absolute bottom-2 left-1/4 anim-float-5 opacity-20 text-emerald-400">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          </svg>
+        </div>
+
+        <!-- Floating Grain Ear 6: Near Headline -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 anim-float-6 opacity-10 text-emerald-200">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-8">
+          <!-- Hero Badge -->
+          <div class="hero-badge inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-pill text-xs font-semibold text-emerald-300 shadow-lg shadow-emerald-950/40">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 live-pulse"></span>
+            <span>Next-Gen AgTech &bull; AI Telemetry &bull; Carbon Neutral Farming</span>
+          </div>
+
+          <!-- Exact High-Impact Heading Requested -->
+          <h1 class="hero-title text-4xl sm:text-6xl xl:text-[4.25rem] font-extrabold tracking-tight font-heading leading-[1.08] text-white">
+            Cultivating the Future of <br class="hidden sm:inline">
+            <span class="bg-gradient-to-r from-emerald-400 via-lime-400 to-emerald-300 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.35)]">
+              Sustainable Agriculture
+            </span>
+          </h1>
+
+          <!-- Compelling Subheadline -->
+          <p class="hero-desc text-base sm:text-lg text-emerald-100/80 max-w-2xl font-normal leading-relaxed">
+            Harnessing precision IoT soil telemetry, autonomous multispectral drone scouting, and predictive AI to maximize crop yields, restore living soil biomes, and eliminate water waste by up to 45%.
+          </p>
+
+          <!-- Two Interactive CTA Buttons with Smooth Hover Micro-Interactions -->
+          <div class="hero-actions flex flex-wrap items-center gap-4 pt-2">
+            <!-- CTA Button 1: Primary Action with Sweep Glow & Arrow Glide -->
+            <button class="open-demo-modal btn-primary-cta px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-400 via-emerald-500 to-lime-500 text-slate-950 font-bold text-base shadow-xl flex items-center gap-3 group">
+              <span>Launch Smart Farm Pilot</span>
+              <div class="w-7 h-7 rounded-xl bg-slate-950/15 flex items-center justify-center cta-arrow">
+                <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2.8]"></i>
+              </div>
+            </button>
+
+            <!-- CTA Button 2: Secondary Interactive Action with Frosted Glass & Rotating Icon -->
+            <a href="#telemetry" class="btn-secondary-cta px-6 py-4 rounded-2xl text-emerald-200 font-semibold text-base flex items-center gap-3 group">
+              <div class="w-7 h-7 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center cta-icon text-emerald-400">
+                <i data-lucide="activity" class="w-4 h-4 stroke-[2.5]"></i>
+              </div>
+              <span>Explore Live Telemetry</span>
+            </a>
+          </div>
+
+          <!-- Hero Live Stats Micro-Pills -->
+          <div class="hero-stats pt-5 grid grid-cols-3 gap-4 border-t border-emerald-900/60">
+            <div class="space-y-1">
+              <div class="text-2xl sm:text-3xl font-bold font-heading text-emerald-400">42%</div>
+              <div class="text-xs text-emerald-200 font-medium">Freshwater Conserved</div>
+            </div>
+            <div class="space-y-1">
+              <div class="text-2xl sm:text-3xl font-bold font-heading text-lime-400">+3.4x</div>
+              <div class="text-xs text-emerald-200 font-medium">Crop Yield Efficiency</div>
+            </div>
+            <div class="space-y-1">
+              <div class="text-2xl sm:text-3xl font-bold font-heading text-emerald-300">99.2%</div>
+              <div class="text-xs text-emerald-200 font-medium">Early Pest Detection</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Interactive Graphic / Preview Card -->
+        <div class="lg:col-span-5">
+          <div class="hero-card glass-card p-6 sm:p-7 rounded-3xl relative overflow-hidden border border-emerald-500/30 shadow-2xl">
+            <!-- Top Header in preview -->
+            <div class="flex items-center justify-between pb-5 border-b border-emerald-800/40">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+                <div>
+                  <h3 class="text-sm font-semibold text-white">Falcon-7 Autonomous Drone</h3>
+                  <p class="text-[11px] text-emerald-300/70">Scouting Mission Active • Altitude 45m</p>
+                </div>
+              </div>
+              <span class="text-xs font-mono font-medium px-2.5 py-1 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-700/40">
+                GPS: 41.8781° N
+              </span>
+            </div>
+
+            <!-- Visual NDVI Simulation Radar with Animated Sector Imagery -->
+            <div class="my-5 rounded-2xl bg-[#021810] border border-emerald-800/40 p-4 sm:p-5 relative overflow-hidden">
+              <div class="flex justify-between items-center mb-3">
+                <span class="text-xs font-medium text-emerald-300 flex items-center gap-1.5">
+                  <i data-lucide="satellite" class="w-4 h-4 text-emerald-400"></i>
+                  NDVI Canopy Vigour Map
+                </span>
+                <span class="text-xs font-bold text-lime-400 flex items-center gap-1">
+                  <span class="w-2 h-2 rounded-full bg-lime-400 animate-ping"></span>
+                  0.89 Field Optimal
+                </span>
+              </div>
+
+              <!-- Animated field grid visualization with multispectral imagery -->
+              <div class="grid grid-cols-4 gap-2 sm:gap-2.5 my-2">
+                <!-- Sector A -->
+                <div class="ndvi-sector-card group" data-sector="sec-a" title="Click to inspect Sector A NDVI canopy telemetry">
+                  <img src="images/sec_a_ndvi.jpg" alt="Sector A NDVI Canopy Vigour Map" class="ndvi-img ndvi-img-a">
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#02150e]/95 via-[#02150e]/30 to-transparent pointer-events-none z-[2]"></div>
+                  <div class="ndvi-scanline scan-a"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tr"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-bl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-br"></div>
+                  <div class="flex items-center justify-between w-full relative z-10">
+                    <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-950/90 text-emerald-300 border border-emerald-500/40 shadow-sm">0.92</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <div class="relative z-10 text-left">
+                    <div class="text-[10px] font-mono font-bold text-white group-hover:text-lime-300 transition-colors flex items-center justify-between">
+                      <span>Sec A</span>
+                      <i data-lucide="scan" class="w-2.5 h-2.5 text-emerald-400 opacity-70 group-hover:opacity-100"></i>
+                    </div>
+                    <div class="text-[8px] font-mono text-emerald-300/80 truncate">Corn Plot</div>
+                  </div>
+                </div>
+
+                <!-- Sector B -->
+                <div class="ndvi-sector-card group" data-sector="sec-b" title="Click to inspect Sector B NDVI canopy telemetry">
+                  <img src="images/sec_b_ndvi.jpg" alt="Sector B NDVI Canopy Vigour Map" class="ndvi-img ndvi-img-b">
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#02150e]/95 via-[#02150e]/30 to-transparent pointer-events-none z-[2]"></div>
+                  <div class="ndvi-scanline scan-b"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tr"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-bl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-br"></div>
+                  <div class="flex items-center justify-between w-full relative z-10">
+                    <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-lime-950/90 text-lime-300 border border-lime-500/40 shadow-sm">0.88</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse"></span>
+                  </div>
+                  <div class="relative z-10 text-left">
+                    <div class="text-[10px] font-mono font-bold text-white group-hover:text-lime-300 transition-colors flex items-center justify-between">
+                      <span>Sec B</span>
+                      <i data-lucide="scan" class="w-2.5 h-2.5 text-lime-400 opacity-70 group-hover:opacity-100"></i>
+                    </div>
+                    <div class="text-[8px] font-mono text-emerald-300/80 truncate">Orchard</div>
+                  </div>
+                </div>
+
+                <!-- Sector C -->
+                <div class="ndvi-sector-card group" data-sector="sec-c" title="Click to inspect Sector C NDVI canopy telemetry">
+                  <img src="images/sec_c_ndvi.jpg" alt="Sector C NDVI Canopy Vigour Map" class="ndvi-img ndvi-img-c">
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#02150e]/95 via-[#02150e]/30 to-transparent pointer-events-none z-[2]"></div>
+                  <div class="ndvi-scanline scan-c"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tr"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-bl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-br"></div>
+                  <div class="flex items-center justify-between w-full relative z-10">
+                    <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-950/90 text-emerald-300 border border-emerald-500/40 shadow-sm">0.79</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <div class="relative z-10 text-left">
+                    <div class="text-[10px] font-mono font-bold text-white group-hover:text-lime-300 transition-colors flex items-center justify-between">
+                      <span>Sec C</span>
+                      <i data-lucide="scan" class="w-2.5 h-2.5 text-emerald-400 opacity-70 group-hover:opacity-100"></i>
+                    </div>
+                    <div class="text-[8px] font-mono text-emerald-300/80 truncate">Pivot Irr.</div>
+                  </div>
+                </div>
+
+                <!-- Sector D -->
+                <div class="ndvi-sector-card group" data-sector="sec-d" title="Click to inspect Sector D NDVI canopy telemetry">
+                  <img src="images/sec_d_ndvi.jpg" alt="Sector D NDVI Canopy Vigour Map" class="ndvi-img ndvi-img-d">
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#02150e]/95 via-[#02150e]/30 to-transparent pointer-events-none z-[2]"></div>
+                  <div class="ndvi-scanline scan-d"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-tr"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-bl"></div>
+                  <div class="ndvi-hud-corner ndvi-hud-br"></div>
+                  <div class="flex items-center justify-between w-full relative z-10">
+                    <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-950/90 text-emerald-300 border border-emerald-500/40 shadow-sm">0.85</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  </div>
+                  <div class="relative z-10 text-left">
+                    <div class="text-[10px] font-mono font-bold text-white group-hover:text-lime-300 transition-colors flex items-center justify-between">
+                      <span>Sec D</span>
+                      <i data-lucide="scan" class="w-2.5 h-2.5 text-emerald-400 opacity-70 group-hover:opacity-100"></i>
+                    </div>
+                    <div class="text-[8px] font-mono text-emerald-300/80 truncate">Greenhouse</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] text-emerald-300/80 pt-2 border-t border-emerald-900/40">
+                <span class="flex items-center gap-1.5"><i data-lucide="crosshair" class="w-3.5 h-3.5 text-emerald-400"></i> Click sector for live drone diagnostics</span>
+                <span class="font-mono text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> 99.8% Sync</span>
+              </div>
+            </div>
+
+            <!-- Micro Quick Insights -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-800/30">
+                <div class="text-[11px] text-emerald-300/70">Automated Micro-Drip</div>
+                <div class="text-sm font-bold text-white flex items-center gap-1.5 mt-0.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  Active (Valve #04)
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-800/30">
+                <div class="text-[11px] text-emerald-300/70">Soil Bio-Activity</div>
+                <div class="text-sm font-bold text-white flex items-center gap-1.5 mt-0.5">
+                  <i data-lucide="trending-up" class="w-3.5 h-3.5 text-lime-400"></i>
+                  +18.4% Microbial
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE IOT FIELD TELEMETRY DASHBOARD (Interactive Section) -->
+    <section id="telemetry" class="max-w-7xl mx-auto px-6 sm:px-8 py-20">
+      <div class="reveal-up text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-xs font-semibold text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          Interactive Live Telemetry Simulator
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold font-heading text-white tracking-tight">
+          Real-Time Soil &amp; Microclimate Control
+        </h2>
+        <p class="text-sm sm:text-base text-emerald-200/80">
+          Experience how EcoHarvest monitors multi-depth rootzones, weather predictions, and automated valve actuators in real time. Switch zones below to inspect sensor feeds.
+        </p>
+      </div>
+
+      <!-- Telemetry Dashboard Container -->
+      <div class="reveal-up glass-card p-6 sm:p-9 rounded-3xl border border-emerald-500/25 shadow-2xl relative">
+        <!-- Zone Selector Tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-emerald-800/40">
+          <div class="flex flex-wrap gap-2.5">
+            <button data-zone="zone-a" class="zone-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-emerald-500 text-black shadow-md shadow-emerald-500/30">
+              Sector A1: Precision Maize
+            </button>
+            <button data-zone="zone-b" class="zone-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-emerald-950/60 text-emerald-300 hover:bg-emerald-900/50">
+              Sector B4: Apple Orchard
+            </button>
+            <button data-zone="zone-c" class="zone-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-emerald-950/60 text-emerald-300 hover:bg-emerald-900/50">
+              Sector C2: Hydroponic Pavilion
+            </button>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div id="live-pulse-dot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 transition-transform"></div>
+            <span class="text-xs font-mono text-emerald-300">STREAM ACTIVE • 3.5s REFRESH</span>
+          </div>
+        </div>
+
+        <!-- Telemetry Data Grid -->
+        <div class="pt-8">
+          <!-- Active Sector Header -->
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+            <div>
+              <span class="text-xs text-emerald-400 font-semibold tracking-wider uppercase">Active Monitoring Zone</span>
+              <h3 id="tel-zone-name" class="text-xl sm:text-2xl font-bold font-heading text-white">
+                Sector A1 - Precision Grain &amp; Maize
+              </h3>
+            </div>
+            <div class="flex items-center gap-3">
+              <span id="tel-valve-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-900/30 text-emerald-300/70 border border-emerald-800/40">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span> Idle / Monitoring
+              </span>
+              <button id="override-valve-btn" class="px-4 py-2 text-xs font-semibold text-emerald-300 bg-emerald-950/60 hover:bg-emerald-800/50 border border-emerald-700/50 rounded-lg transition-colors">
+                Trigger Micro-Pulse Flow
+              </button>
+            </div>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Soil Moisture Card -->
+            <div class="p-5 rounded-2xl bg-emerald-950/40 border border-emerald-800/40 space-y-3">
+              <div class="flex items-center justify-between text-emerald-200 font-medium">
+                <span class="text-xs">Volumetric Moisture</span>
+                <i data-lucide="droplet" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span id="tel-moisture" class="text-3xl font-bold font-heading text-white">42%</span>
+                <span class="text-xs text-emerald-400 font-medium">Target: 40-50%</span>
+              </div>
+              <!-- Progress Bar -->
+              <div class="w-full bg-emerald-950 rounded-full h-2 overflow-hidden">
+                <div id="tel-moisture-bar" class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-2 rounded-full transition-all duration-500" style="width: 42%"></div>
+              </div>
+            </div>
+
+            <!-- Rootzone Temperature Card -->
+            <div class="p-5 rounded-2xl bg-emerald-950/40 border border-emerald-800/40 space-y-3">
+              <div class="flex items-center justify-between text-emerald-200 font-medium">
+                <span class="text-xs">Rootzone Temp</span>
+                <i data-lucide="thermometer" class="w-4 h-4 text-amber-400"></i>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span id="tel-temp" class="text-3xl font-bold font-heading text-white">24.2°C</span>
+                <span class="text-xs text-emerald-400 font-medium">Equilibrium</span>
+              </div>
+              <div class="text-[11px] text-emerald-200/80 flex items-center gap-1">
+                <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-300"></i> Ambient Solar: 820 W/m²
+              </div>
+            </div>
+
+            <!-- Soil pH Level Card -->
+            <div class="p-5 rounded-2xl bg-emerald-950/40 border border-emerald-800/40 space-y-3">
+              <div class="flex items-center justify-between text-emerald-200 font-medium">
+                <span class="text-xs">Soil pH Balance</span>
+                <i data-lucide="flask-conical" class="w-4 h-4 text-emerald-400"></i>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span id="tel-ph" class="text-3xl font-bold font-heading text-white">6.7</span>
+                <span class="text-xs text-emerald-400 font-medium">Slightly Acidic (Ideal)</span>
+              </div>
+              <div class="text-[11px] text-emerald-200/80 flex items-center gap-1">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Salinity: 0.8 dS/m
+              </div>
+            </div>
+
+            <!-- Nitrogen N-P-K Card -->
+            <div class="p-5 rounded-2xl bg-emerald-950/40 border border-emerald-800/40 space-y-3">
+              <div class="flex items-center justify-between text-emerald-200 font-medium">
+                <span class="text-xs">Nitrogen Saturation</span>
+                <i data-lucide="dna" class="w-4 h-4 text-lime-400"></i>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span id="tel-nitrogen" class="text-3xl font-bold font-heading text-white">148 ppm</span>
+                <span class="text-xs text-lime-400 font-medium">Bio-Available</span>
+              </div>
+              <div class="text-[11px] text-emerald-200/80 flex items-center gap-1">
+                <i data-lucide="leaf" class="w-3.5 h-3.5 text-lime-400"></i> Zero Leaching Risk
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Bar: Crop Health & Drone Sync Status -->
+          <div class="mt-6 p-4 rounded-2xl bg-emerald-900/20 border border-emerald-800/30 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-emerald-200">
+            <div class="flex items-center gap-3">
+              <i data-lucide="activity" class="w-4 h-4 text-emerald-400"></i>
+              <span>Crop Canopy Status: <strong id="tel-health" class="text-emerald-300">Optimal (NDVI 0.88)</strong></span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="radar" class="w-4 h-4 text-cyan-400"></i>
+              <span>Autonomous Drone Coverage: <strong id="tel-drone" class="text-emerald-300">98.4%</strong></span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="cpu" class="w-4 h-4 text-lime-400"></i>
+              <span>Actuator Protocol: <span id="tel-valve-status" class="font-mono text-emerald-400">AUTO - STANDBY</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SMART FARMING SOLUTIONS SECTION -->
+    <section id="solutions" class="max-w-7xl mx-auto px-6 sm:px-8 py-24 relative z-10">
+      <!-- Section Header -->
+      <div class="reveal-up text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-semibold text-emerald-300">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-lime-400"></i>
+          <span>Autonomous Field Architecture</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold font-heading text-white tracking-tight">
+          Smart Farming Solutions
+        </h2>
+        <p class="text-sm sm:text-base text-emerald-200/80 max-w-2xl mx-auto leading-relaxed">
+          Intelligent AgTech infrastructure engineered to regenerate soil ecology, automate closed-loop irrigation, and maximize crop yields with millimeter precision.
+        </p>
+      </div>
+
+      <!-- THREE INTERACTIVE CARDS -->
+      <div id="solutions-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- CARD 1: Precision Crop Monitoring -->
+        <div class="solution-card scale-hover-card glass-card p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-emerald-500/25 relative overflow-hidden group">
+          <!-- Ambient Card Backlight -->
+          <div class="absolute -top-16 -right-16 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-emerald-400/20 transition-all duration-500"></div>
+
+          <div class="space-y-5 relative z-10">
+            <!-- Icon & Badge Header -->
+            <div class="flex items-center justify-between">
+              <div class="card-icon-wrapper w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-lg shadow-emerald-950/50">
+                <i data-lucide="scan" class="w-7 h-7 stroke-[2.2]"></i>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-700/50">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                AI Vision &amp; Drone Scouting
+              </span>
+            </div>
+
+            <!-- Title & Description -->
+            <div>
+              <h3 class="text-2xl font-bold font-heading text-white group-hover:text-emerald-300 transition-colors">
+                Precision Crop Monitoring
+              </h3>
+              <p class="text-sm text-emerald-100/75 leading-relaxed mt-2.5">
+                High-cadence multispectral drone scanning and Sentinel satellite data synthesize sub-millimeter canopy vigor maps, pinpointing fungal stress, pest infestation, and nitrogen deficits before visible leaf damage.
+              </p>
+            </div>
+
+            <!-- Interactive Micro-Telemetry Widget inside Card -->
+            <div class="p-4 rounded-2xl bg-[#021c13] border border-emerald-800/40 space-y-2.5">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-emerald-300/70 font-medium flex items-center gap-1.5">
+                  <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i> NDVI Canopy Health
+                </span>
+                <span class="font-bold text-emerald-400 font-mono">0.89 Optimal</span>
+              </div>
+              <div class="w-full bg-emerald-950 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-gradient-to-r from-emerald-500 to-lime-400 h-1.5 rounded-full" style="width: 89%"></div>
+              </div>
+              <div class="flex justify-between items-center text-[11px] text-emerald-300/60 pt-1">
+                <span>Blight Risk: <strong class="text-emerald-300">0.0% Detected</strong></span>
+                <span>Scanned: <strong class="text-emerald-300">100% Acreage</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Feature Tags & Action -->
+          <div class="pt-4 border-t border-emerald-800/40 space-y-3 relative z-10">
+            <div class="flex flex-wrap gap-2 text-[11px] text-emerald-300/80">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Multispectral Imaging</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Pest Triangulation</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Yield Prediction</span>
+            </div>
+            <a href="#telemetry" class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 group-hover:text-lime-300 group-hover:translate-x-1 transition-all pt-1">
+              <span>Inspect Crop Telemetry</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 2: Automated Irrigation -->
+        <div class="solution-card scale-hover-card glass-card p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-emerald-500/25 relative overflow-hidden group">
+          <!-- Ambient Card Backlight -->
+          <div class="absolute -top-16 -right-16 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-400/20 transition-all duration-500"></div>
+
+          <div class="space-y-5 relative z-10">
+            <!-- Icon & Badge Header -->
+            <div class="flex items-center justify-between">
+              <div class="card-icon-wrapper w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shadow-lg shadow-emerald-950/50">
+                <i data-lucide="droplets" class="w-7 h-7 stroke-[2.2]"></i>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-950/80 text-cyan-300 border border-cyan-800/50">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                Closed-Loop IoT Precision
+              </span>
+            </div>
+
+            <!-- Title & Description -->
+            <div>
+              <h3 class="text-2xl font-bold font-heading text-white group-hover:text-cyan-300 transition-colors">
+                Automated Irrigation
+              </h3>
+              <p class="text-sm text-emerald-100/75 leading-relaxed mt-2.5">
+                Subterranean rootzone probes synchronize with hyper-local atmospheric radars to actuate smart solenoid valves automatically, providing targeted hydration while cutting water waste and pumping costs by up to 45%.
+              </p>
+            </div>
+
+            <!-- Interactive Micro-Telemetry Widget inside Card -->
+            <div class="p-4 rounded-2xl bg-[#021c13] border border-cyan-900/40 space-y-2.5">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-cyan-300/70 font-medium flex items-center gap-1.5">
+                  <i data-lucide="gauge" class="w-3.5 h-3.5 text-cyan-400"></i> Irrigation Water Saved
+                </span>
+                <span class="font-bold text-cyan-400 font-mono">+42% Conserved</span>
+              </div>
+              <div class="w-full bg-emerald-950 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-gradient-to-r from-cyan-500 to-emerald-400 h-1.5 rounded-full" style="width: 78%"></div>
+              </div>
+              <div class="flex justify-between items-center text-[11px] text-emerald-300/60 pt-1">
+                <span>Valve Actuators: <strong class="text-cyan-300">Auto-Standby</strong></span>
+                <span>Evaporation: <strong class="text-cyan-300">0% Near Zero</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Feature Tags & Action -->
+          <div class="pt-4 border-t border-emerald-800/40 space-y-3 relative z-10">
+            <div class="flex flex-wrap gap-2 text-[11px] text-emerald-300/80">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Sub-Root Probes</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Radar Forecast Sync</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Variable Rate Drip</span>
+            </div>
+            <a href="#calculator" class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 group-hover:text-cyan-200 group-hover:translate-x-1 transition-all pt-1">
+              <span>Calculate Water Savings</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 3: Soil Health Analytics -->
+        <div class="solution-card scale-hover-card glass-card p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-emerald-500/25 relative overflow-hidden group">
+          <!-- Ambient Card Backlight -->
+          <div class="absolute -top-16 -right-16 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-400/20 transition-all duration-500"></div>
+
+          <div class="space-y-5 relative z-10">
+            <!-- Icon & Badge Header -->
+            <div class="flex items-center justify-between">
+              <div class="card-icon-wrapper w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shadow-lg shadow-emerald-950/50">
+                <i data-lucide="dna" class="w-7 h-7 stroke-[2.2]"></i>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-950/80 text-amber-300 border border-amber-800/50">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                Regenerative Biome &amp; Carbon
+              </span>
+            </div>
+
+            <!-- Title & Description -->
+            <div>
+              <h3 class="text-2xl font-bold font-heading text-white group-hover:text-amber-300 transition-colors">
+                Soil Health Analytics
+              </h3>
+              <p class="text-sm text-emerald-100/75 leading-relaxed mt-2.5">
+                Continuous subterranean electrochemical profiling tracks real-time N-P-K nutrient bioavailability, rootzone salinity, and microbial respiration, optimizing cover crop rotations and generating audited carbon credits.
+              </p>
+            </div>
+
+            <!-- Interactive Micro-Telemetry Widget inside Card -->
+            <div class="p-4 rounded-2xl bg-[#021c13] border border-amber-900/40 space-y-2.5">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-amber-300/70 font-medium flex items-center gap-1.5">
+                  <i data-lucide="sprout" class="w-3.5 h-3.5 text-amber-400"></i> Microbial Bio-Activity
+                </span>
+                <span class="font-bold text-amber-400 font-mono">+18.4% Restored</span>
+              </div>
+              <div class="w-full bg-emerald-950 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-gradient-to-r from-amber-500 to-lime-400 h-1.5 rounded-full" style="width: 84%"></div>
+              </div>
+              <div class="flex justify-between items-center text-[11px] text-emerald-300/60 pt-1">
+                <span>Soil pH Index: <strong class="text-amber-300">6.7 Optimal</strong></span>
+                <span>Carbon MRV: <strong class="text-amber-300">Verified Offsets</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Feature Tags & Action -->
+          <div class="pt-4 border-t border-emerald-800/40 space-y-3 relative z-10">
+            <div class="flex flex-wrap gap-2 text-[11px] text-emerald-300/80">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">N-P-K Saturation</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Microbial Respiration</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/30">Carbon Credit Auditing</span>
+            </div>
+            <button class="open-demo-modal inline-flex items-center gap-2 text-xs font-semibold text-amber-400 group-hover:text-amber-200 group-hover:translate-x-1 transition-all pt-1">
+              <span>Request Soil Health Audit</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ANIMATED STATISTICS COUNTER GRID TRACKING REAL-TIME METRICS -->
+      <div id="impact" class="mt-16 glass-card p-8 sm:p-12 rounded-3xl border border-emerald-500/30 shadow-2xl relative overflow-hidden">
+        <!-- Live Header Bar in stats -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-8 border-b border-emerald-800/40">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 mb-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              LIVE AUDITED GLOBAL IMPACT &bull; REAL-TIME FIELD METRICS
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">
+              Measurable Performance Across 280+ Cooperatives
+            </h3>
+          </div>
+          <span class="text-xs font-mono font-medium px-3 py-1.5 rounded-xl bg-[#021b12] text-emerald-300 border border-emerald-700/40 flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+            Third-Party Agronomic Audited
+          </span>
+        </div>
+
+        <!-- 4-Stat Grid -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-8 text-center sm:text-left">
+          <!-- Metric 1: Water Saved -->
+          <div class="space-y-2 p-3 rounded-2xl bg-emerald-950/20 border border-emerald-900/30">
+            <div class="flex items-center gap-2 justify-center sm:justify-start text-cyan-400">
+              <i data-lucide="droplet" class="w-4 h-4"></i>
+              <span class="text-xs uppercase tracking-wider font-semibold">Water Saved</span>
+            </div>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading text-white">
+              <span class="counter-val text-cyan-400" data-target="4.2" data-suffix="B">0</span>
+            </div>
+            <p class="text-xs text-emerald-200/70 font-medium">Gallons of freshwater conserved via micro-drip</p>
+          </div>
+
+          <!-- Metric 2: Crop Yield Increase -->
+          <div class="space-y-2 p-3 rounded-2xl bg-emerald-950/20 border border-emerald-900/30">
+            <div class="flex items-center gap-2 justify-center sm:justify-start text-lime-400">
+              <i data-lucide="trending-up" class="w-4 h-4"></i>
+              <span class="text-xs uppercase tracking-wider font-semibold">Yield Increase</span>
+            </div>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading text-white">
+              <span class="counter-val text-lime-400" data-target="38" data-prefix="+" data-suffix="%">0</span>
+            </div>
+            <p class="text-xs text-emerald-200/70 font-medium">Average harvest surge reported across grain &amp; fruit</p>
+          </div>
+
+          <!-- Metric 3: Fertilizer Reduced -->
+          <div class="space-y-2 p-3 rounded-2xl bg-emerald-950/20 border border-emerald-900/30">
+            <div class="flex items-center gap-2 justify-center sm:justify-start text-emerald-400">
+              <i data-lucide="flask-conical" class="w-4 h-4"></i>
+              <span class="text-xs uppercase tracking-wider font-semibold">Input Reductions</span>
+            </div>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading text-white">
+              <span class="counter-val text-emerald-400" data-target="45" data-suffix="%">0</span>
+            </div>
+            <p class="text-xs text-emerald-200/70 font-medium">Synthetic fertilizer &amp; chemical runoff cut</p>
+          </div>
+
+          <!-- Metric 4: Farmland Monitored -->
+          <div class="space-y-2 p-3 rounded-2xl bg-emerald-950/20 border border-emerald-900/30">
+            <div class="flex items-center gap-2 justify-center sm:justify-start text-amber-400">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span class="text-xs uppercase tracking-wider font-semibold">Active Land</span>
+            </div>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading text-white">
+              <span class="counter-val text-amber-400" data-target="150000" data-suffix="+">0</span>
+            </div>
+            <p class="text-xs text-emerald-200/70 font-medium">Hectares under continuous AI satellite surveillance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE ECO-IMPACT CALCULATOR -->
+    <section id="calculator" class="max-w-7xl mx-auto px-6 sm:px-8 py-20">
+      <div class="reveal-up glass-card p-8 sm:p-12 rounded-3xl border border-emerald-500/30 shadow-2xl relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <!-- Inputs Column -->
+          <div class="lg:col-span-6 space-y-8">
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-semibold text-emerald-400">
+                <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+                ROI &amp; Sustainability Estimator
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-bold font-heading text-white">
+                Calculate Your Farm’s Projected Impact
+              </h2>
+              <p class="text-sm text-emerald-200/70">
+                Adjust your acreage and predominant crop category to see real-time projections for resource savings, yield improvements, and potential carbon income.
+              </p>
+            </div>
+
+            <!-- Slider: Acreage -->
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <label for="calc-acres" class="text-sm font-semibold text-emerald-200">Cultivated Farm Size</label>
+                <span id="calc-acres-val" class="text-base font-bold font-mono text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-lg border border-emerald-700/40">
+                  500 Acres
+                </span>
+              </div>
+              <input id="calc-acres" type="range" min="20" max="5000" step="20" value="500" class="w-full">
+              <div class="flex justify-between text-[11px] text-emerald-300/50">
+                <span>20 Acres</span>
+                <span>2,500 Acres</span>
+                <span>5,000+ Acres</span>
+              </div>
+            </div>
+
+            <!-- Select: Crop Category -->
+            <div class="space-y-3">
+              <label for="calc-crop" class="text-sm font-semibold text-emerald-200">Crop Focus</label>
+              <div class="relative">
+                <select id="calc-crop" class="w-full bg-[#021c13] text-emerald-100 border border-emerald-700/50 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-emerald-400 appearance-none cursor-pointer">
+                  <option value="grains" selected>Grains &amp; Cereals (Corn, Wheat, Soy)</option>
+                  <option value="fruits">High-Value Fruits &amp; Berries</option>
+                  <option value="vegetables">Commercial Leafy Greens &amp; Vegetables</option>
+                  <option value="vineyard">Vineyards &amp; Viticulture</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-emerald-400">
+                  <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+
+            <button class="open-demo-modal w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 font-bold text-sm hover:opacity-95 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
+              <span>Request Verified Farm Audit Report</span>
+            </button>
+          </div>
+
+          <!-- Output Display Column -->
+          <div class="lg:col-span-6 bg-[#02180f] p-7 sm:p-8 rounded-2xl border border-emerald-700/40 shadow-inner space-y-6">
+            <div class="flex items-center justify-between border-b border-emerald-800/40 pb-4">
+              <h3 class="text-base font-semibold text-white">Estimated Annual Benefits</h3>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                EcoHarvest Model v4.2
+              </span>
+            </div>
+
+            <!-- Grid Outputs -->
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Water -->
+              <div class="p-4 rounded-xl bg-emerald-950/60 border border-emerald-800/30">
+                <div class="text-xs text-emerald-300/70 mb-1 flex items-center gap-1.5">
+                  <i data-lucide="droplets" class="w-3.5 h-3.5 text-cyan-400"></i> Water Conserved
+                </div>
+                <div id="calc-water" class="text-2xl font-bold font-heading text-cyan-300">4.25M gal</div>
+                <div class="text-[10px] text-emerald-400/60 mt-1">Based on micro-drip precision</div>
+              </div>
+
+              <!-- Fertilizer -->
+              <div class="p-4 rounded-xl bg-emerald-950/60 border border-emerald-800/30">
+                <div class="text-xs text-emerald-300/70 mb-1 flex items-center gap-1.5">
+                  <i data-lucide="flask-round" class="w-3.5 h-3.5 text-lime-400"></i> Chemical Reduction
+                </div>
+                <div id="calc-fertilizer" class="text-2xl font-bold font-heading text-lime-300">17,500 kg</div>
+                <div class="text-[10px] text-emerald-400/60 mt-1">Targeted rootzone delivery</div>
+              </div>
+
+              <!-- Carbon Revenue -->
+              <div class="p-4 rounded-xl bg-emerald-950/60 border border-emerald-800/30">
+                <div class="text-xs text-emerald-300/70 mb-1 flex items-center gap-1.5">
+                  <i data-lucide="badge-dollar-sign" class="w-3.5 h-3.5 text-emerald-400"></i> Est. Carbon Credits
+                </div>
+                <div id="calc-carbon" class="text-2xl font-bold font-heading text-emerald-300">$14,000</div>
+                <div class="text-[10px] text-emerald-400/60 mt-1">Monetized via verified markets</div>
+              </div>
+
+              <!-- Yield Surge -->
+              <div class="p-4 rounded-xl bg-emerald-950/60 border border-emerald-800/30">
+                <div class="text-xs text-emerald-300/70 mb-1 flex items-center gap-1.5">
+                  <i data-lucide="trending-up" class="w-3.5 h-3.5 text-amber-400"></i> Avg. Yield Surge
+                </div>
+                <div id="calc-surge" class="text-2xl font-bold font-heading text-amber-300">+22%</div>
+                <div class="text-[10px] text-emerald-400/60 mt-1">Stress reduction &amp; timing</div>
+              </div>
+            </div>
+
+            <!-- Footnote notice -->
+            <p class="text-xs text-emerald-300/60 leading-relaxed italic">
+              *Projections based on aggregated historical field trial metrics from 240+ partner farms over 3 harvest cycles. Individual results may vary by topography and climatic conditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI AGRONOMIST & CROP DIAGNOSTICS CONSOLE (Interactive Problem Submission Component) -->
+    <section id="diagnostics" class="max-w-7xl mx-auto px-6 sm:px-8 py-20 relative z-10">
+      <div class="reveal-up text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-semibold text-emerald-400">
+          <i data-lucide="microscope" class="w-4 h-4 text-lime-400"></i>
+          <span>AI Phytopathology &amp; Field Diagnostics</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse ml-1"></span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold font-heading text-white tracking-tight">
+          Agricultural Problem Diagnostic Assistant
+        </h2>
+        <p class="text-sm sm:text-base text-emerald-200/80 max-w-2xl mx-auto leading-relaxed">
+          Submit observed field symptoms detailing crop diseases, pest infestations, soil nutrient deficiencies, or irrigation failures. Receive immediate agronomic analysis, sensor correlations, and targeted organic remediation protocols.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- LEFT COLUMN: Problem Submission Form (7 cols) -->
+        <div class="lg:col-span-7 glass-card p-6 sm:p-9 rounded-3xl border border-emerald-500/25 shadow-2xl space-y-6 relative overflow-hidden">
+          <div class="flex items-center justify-between border-b border-emerald-800/40 pb-5">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <i data-lucide="clipboard-pen" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold font-heading text-white">Symptom Input &amp; Field Audit</h3>
+                <p class="text-[11px] text-emerald-300/70">Connected to EcoHarvest Agronomic Rule Engine</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/70 px-2.5 py-1 rounded-lg border border-emerald-800/40 flex items-center gap-1">
+              <i data-lucide="database" class="w-3 h-3 text-emerald-400"></i>
+              SQLite Synced
+            </span>
+          </div>
+
+          <form id="diagnostic-form" class="space-y-5">
+            <!-- Form Error / Feedback Alert Banner -->
+            <div id="diag-form-alert" class="hidden p-3.5 rounded-2xl text-xs flex items-start gap-2.5 border transition-all"></div>
+
+            <!-- 1. Problem Category Selector (Pills) -->
+            <div class="space-y-2.5">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-emerald-300">
+                1. Select Problem Domain <span class="text-rose-400">*</span>
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="diag-category-pills">
+                <button type="button" data-cat="crop_disease" class="diag-cat-btn active-cat flex flex-col items-center justify-center p-3 rounded-2xl text-center border transition-all text-xs font-semibold gap-1.5">
+                  <span class="text-lg">🌾</span>
+                  <span>Crop Disease</span>
+                </button>
+                <button type="button" data-cat="pest_infestation" class="diag-cat-btn flex flex-col items-center justify-center p-3 rounded-2xl text-center border transition-all text-xs font-semibold gap-1.5">
+                  <span class="text-lg">🐛</span>
+                  <span>Pest Outbreak</span>
+                </button>
+                <button type="button" data-cat="nutrient_deficiency" class="diag-cat-btn flex flex-col items-center justify-center p-3 rounded-2xl text-center border transition-all text-xs font-semibold gap-1.5">
+                  <span class="text-lg">🧪</span>
+                  <span>Soil Deficiency</span>
+                </button>
+                <button type="button" data-cat="irrigation_failure" class="diag-cat-btn flex flex-col items-center justify-center p-3 rounded-2xl text-center border transition-all text-xs font-semibold gap-1.5">
+                  <span class="text-lg">💧</span>
+                  <span>Irrigation Fault</span>
+                </button>
+              </div>
+              <input type="hidden" id="diag-category" value="crop_disease">
+            </div>
+
+            <!-- 2. Plot / Crop Affected & Urgency Level -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Sector / Crop -->
+              <div class="space-y-1.5">
+                <label for="diag-crop" class="block text-xs font-semibold text-emerald-300">
+                  Target Field / Crop Sector
+                </label>
+                <div class="relative">
+                  <select id="diag-crop" class="w-full bg-[#021b12] text-emerald-100 border border-emerald-700/50 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:outline-none focus:border-emerald-400 appearance-none">
+                    <option value="Sector A1: Sweet Corn & Maize">Sector A1: Sweet Corn &amp; Maize</option>
+                    <option value="Sector B4: Apple & Fruit Orchard">Sector B4: Apple &amp; Fruit Orchard</option>
+                    <option value="Sector C2: Hydroponic Pavilion">Sector C2: Hydroponic Pavilion</option>
+                    <option value="General Open Field Farmland">General Open Field Farmland</option>
+                    <option value="Commercial Berry Greenhouse">Commercial Berry Greenhouse</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-emerald-400">
+                    <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Urgency Level -->
+              <div class="space-y-1.5">
+                <label for="diag-urgency" class="block text-xs font-semibold text-emerald-300">
+                  Observed Severity Level
+                </label>
+                <div class="relative">
+                  <select id="diag-urgency" class="w-full bg-[#021b12] text-emerald-100 border border-emerald-700/50 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:outline-none focus:border-emerald-400 appearance-none">
+                    <option value="moderate" selected>🟡 Moderate - Visible localized symptoms</option>
+                    <option value="low">🟢 Low - Preventative / Initial suspicion</option>
+                    <option value="critical">🔴 Critical - Rapid spreading / Yield loss risk</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-emerald-400">
+                    <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Problem Details Textarea -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="diag-symptoms" class="block text-xs font-semibold text-emerald-300">
+                  Detailed Symptoms &amp; Visual Evidence <span class="text-rose-400">*</span>
+                </label>
+                <span id="diag-char-count" class="text-[10px] font-mono text-emerald-400/70">0 / 800 chars</span>
+              </div>
+              <textarea id="diag-symptoms" rows="4" maxlength="800" class="w-full bg-[#021c13] text-emerald-100 placeholder-emerald-400/40 border border-emerald-700/50 rounded-2xl p-3.5 text-xs sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors leading-relaxed" placeholder="Describe what you are seeing in the field (e.g., 'Elongated tan lesions with dark borders on corn leaves', 'Clusters of tiny green insects under apple foliage with sticky honeydew', 'Lower leaves turning yellow along center vein', or 'Solenoid valve unresponsiveness with zero water pressure')..."></textarea>
+            </div>
+
+            <!-- 4. Clickable Quick-Fill Sample Prompts -->
+            <div class="space-y-1.5">
+              <div class="text-[11px] font-medium text-emerald-300/70 flex items-center gap-1">
+                <i data-lucide="sparkles" class="w-3 h-3 text-lime-400"></i>
+                <span>Quick Scenario Starters (Click to pre-fill):</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" class="diag-prompt-chip text-[11px] px-2.5 py-1 rounded-lg bg-emerald-950/70 text-emerald-300 hover:text-white hover:bg-emerald-900/60 border border-emerald-800/40 transition-all text-left" data-cat="crop_disease" data-crop="Sector A1: Sweet Corn & Maize" data-urgency="critical" data-text="Elongated gray-green lesions turning tan on lower sweet corn leaves. Lesions are spindle-shaped with dark fungal sporulation after heavy evening rains.">
+                  🌾 Northern Corn Leaf Blight
+                </button>
+                <button type="button" class="diag-prompt-chip text-[11px] px-2.5 py-1 rounded-lg bg-emerald-950/70 text-emerald-300 hover:text-white hover:bg-emerald-900/60 border border-emerald-800/40 transition-all text-left" data-cat="pest_infestation" data-crop="Sector B4: Apple & Fruit Orchard" data-urgency="moderate" data-text="Clusters of small green aphids congregated under new apple shoot leaves with curled leaf tips and sticky honeydew residue attracting ants.">
+                  🐛 Apple Aphid & Honeydew
+                </button>
+                <button type="button" class="diag-prompt-chip text-[11px] px-2.5 py-1 rounded-lg bg-emerald-950/70 text-emerald-300 hover:text-white hover:bg-emerald-900/60 border border-emerald-800/40 transition-all text-left" data-cat="nutrient_deficiency" data-crop="Sector A1: Sweet Corn & Maize" data-urgency="moderate" data-text="Pronounced V-shaped yellowing starting from tips of older bottom leaves and moving down the midrib. Rootzone nitrogen sensor reading 62 ppm.">
+                  🧪 Nitrogen Chlorosis (V-Pattern)
+                </button>
+                <button type="button" class="diag-prompt-chip text-[11px] px-2.5 py-1 rounded-lg bg-emerald-950/70 text-emerald-300 hover:text-white hover:bg-emerald-900/60 border border-emerald-800/40 transition-all text-left" data-cat="irrigation_failure" data-crop="Sector B4: Apple & Fruit Orchard" data-urgency="critical" data-text="Solenoid valve in Sector B drawing 24VAC operating current from controller but valve diaphragm fails to open. Zero line flow registered on downstream sensor.">
+                  💧 Solenoid Valve Jam / No Flow
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Simulated Photo / Field Evidence Attachment -->
+            <div class="space-y-1.5">
+              <label class="block text-xs font-semibold text-emerald-300">
+                Multi-Spectral / Photographic Evidence (Optional)
+              </label>
+              <div id="diag-dropzone" class="p-3.5 rounded-2xl border-2 border-dashed border-emerald-800/50 hover:border-emerald-500/50 bg-[#02180f] text-center cursor-pointer transition-colors flex items-center justify-center gap-3">
+                <i data-lucide="camera" class="w-5 h-5 text-emerald-400"></i>
+                <div class="text-left">
+                  <div class="text-xs font-semibold text-white">Attach Leaf, Soil, or Hardware Snapshot</div>
+                  <div class="text-[10px] text-emerald-300/60">Simulates computer vision leaf texture &amp; multispectral ingestion</div>
+                </div>
+                <input type="file" id="diag-file-input" accept="image/*" class="hidden">
+              </div>
+              <div id="diag-file-preview" class="hidden items-center justify-between p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-700/40 text-xs text-emerald-200">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="image" class="w-4 h-4 text-emerald-400"></i>
+                  <span id="diag-file-name" class="font-medium">leaf_symptom_specimen.jpg</span>
+                </div>
+                <button type="button" id="diag-remove-file" class="text-rose-400 hover:text-rose-200 text-xs">Remove</button>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="diag-submit-btn" class="btn-primary-cta w-full py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/25 hover:shadow-emerald-400/40 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="scan-search" class="w-4 h-4 stroke-[2.5]"></i>
+              <span>Run Agronomic AI Diagnosis</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- RIGHT COLUMN: Interactive Diagnosis Results & Remediation Card (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Main Output Container -->
+          <div id="diag-output-card" class="glass-card p-6 sm:p-8 rounded-3xl border border-emerald-500/25 shadow-2xl space-y-6 relative overflow-hidden transition-all duration-300">
+            
+            <!-- Default Idle State -->
+            <div id="diag-state-idle" class="py-12 px-4 text-center space-y-4">
+              <div class="w-16 h-16 rounded-3xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 shadow-inner">
+                <i data-lucide="radar" class="w-8 h-8 animate-pulse"></i>
+              </div>
+              <div class="space-y-1.5">
+                <h4 class="text-lg font-bold font-heading text-white">Diagnostic Engine Ready</h4>
+                <p class="text-xs text-emerald-200/70 max-w-xs mx-auto leading-relaxed">
+                  Select a category or click any starter scenario to submit field observations. Results will populate here with instant treatment protocols and SQLite persistence.
+                </p>
+              </div>
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/60 border border-emerald-800/40 text-[11px] font-mono text-emerald-300">
+                <span class="w-2 h-2 rounded-full bg-lime-400 animate-ping"></span>
+                Phytopathology Database v4.2 Online
+              </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="diag-state-loading" class="hidden py-16 px-4 text-center space-y-5">
+              <div class="relative w-16 h-16 mx-auto">
+                <div class="w-16 h-16 rounded-full border-4 border-emerald-900 border-t-emerald-400 animate-spin"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-emerald-400">
+                  <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <h4 class="text-base font-bold text-white">Cross-Referencing Field Data...</h4>
+                <p id="diag-loading-step" class="text-xs font-mono text-emerald-300 animate-pulse">
+                  Querying phytopathology indices &amp; sensor telemetry...
+                </p>
+              </div>
+            </div>
+
+            <!-- Active Result State: Structured Expert Solution -->
+            <div id="diag-state-result" class="hidden space-y-6">
+              <!-- Result Header -->
+              <div class="space-y-2.5 border-b border-emerald-800/40 pb-5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span id="diag-res-confidence" class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                    96% CONFIDENCE MATCH
+                  </span>
+                  <span id="diag-res-badge" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-950/70 text-rose-300 border border-rose-700/50">
+                    CRITICAL SEVERITY
+                  </span>
+                </div>
+                <div>
+                  <h3 id="diag-res-title" class="text-xl sm:text-2xl font-bold font-heading text-white">
+                    Northern Corn Leaf Blight
+                  </h3>
+                  <div id="diag-res-scientific" class="text-xs font-mono text-emerald-400/90 italic mt-0.5">
+                    Exserohilum turcicum / Setosphaeria turcica
+                  </div>
+                </div>
+                <p id="diag-res-pathogen" class="text-xs text-emerald-200/80 leading-relaxed">
+                  Fungal foliar pathogen stimulated by prolonged canopy wetness and warm microclimates.
+                </p>
+
+                <!-- Risk Assessment Notice -->
+                <div id="diag-res-risk" class="p-3 rounded-xl bg-amber-950/30 border border-amber-800/40 text-xs text-amber-200/90 flex items-start gap-2">
+                  <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                  <span id="diag-res-risk-text">High potential for 30-50% grain yield reduction if lesions reach ear leaf before silking.</span>
+                </div>
+
+                <!-- Submitted Problem Summary Box -->
+                <div id="diag-res-problem-box" class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-800/40 text-xs space-y-1">
+                  <div class="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400 font-mono">
+                    <i data-lucide="message-square-text" class="w-3.5 h-3.5"></i>
+                    <span>Submitted Field Problem:</span>
+                  </div>
+                  <p id="diag-res-problem-text" class="text-emerald-100 italic leading-relaxed pl-1"></p>
+                </div>
+              </div>
+
+              <!-- Treatment Comparison Controller: Organic vs. Chemical -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+                    <i data-lucide="scale" class="w-3.5 h-3.5 text-lime-400"></i>
+                    Treatment Protocols: Organic vs. Chemical
+                  </h4>
+                  <div class="flex items-center gap-1 bg-emerald-950/80 p-1 rounded-xl border border-emerald-800/40 text-[11px]">
+                    <button type="button" id="diag-tab-all" class="px-2.5 py-1 rounded-lg font-semibold bg-emerald-500 text-slate-950 transition-all">Both</button>
+                    <button type="button" id="diag-tab-organic" class="px-2.5 py-1 rounded-lg font-semibold text-emerald-300 hover:text-white transition-all">Organic</button>
+                    <button type="button" id="diag-tab-chemical" class="px-2.5 py-1 rounded-lg font-semibold text-emerald-300 hover:text-white transition-all">Chemical</button>
+                  </div>
+                </div>
+
+                <!-- Treatment Cards (Organic vs. Chemical) -->
+                <div class="space-y-3" id="diag-treatments-container">
+                  <!-- 1. Organic Treatment Card -->
+                  <div id="diag-card-organic" class="p-4 rounded-2xl bg-gradient-to-br from-emerald-950/70 to-emerald-900/40 border border-emerald-600/50 space-y-2.5 relative">
+                    <div class="flex items-center justify-between">
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                        <i data-lucide="leaf" class="w-3 h-3 text-lime-400"></i>
+                        OMRI-LISTED ORGANIC PROTOCOL
+                      </span>
+                      <span class="text-[10px] font-mono text-lime-400 font-semibold">100% Bio-Rational</span>
+                    </div>
+                    <div class="text-sm font-bold text-white" id="diag-org-name">
+                      Bio-Fungicidal Phyllosphere Colonizer &amp; Copper Complex
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-emerald-200">
+                      <div class="p-2 rounded-xl bg-emerald-950/50 border border-emerald-800/40">
+                        <span class="text-[10px] text-emerald-400 font-semibold block uppercase">Active Agent</span>
+                        <span id="diag-org-agent" class="font-medium text-white">Bacillus amyloliquefaciens (Strain D747)</span>
+                      </div>
+                      <div class="p-2 rounded-xl bg-emerald-950/50 border border-emerald-800/40">
+                        <span class="text-[10px] text-emerald-400 font-semibold block uppercase">Prescribed Dosage</span>
+                        <span id="diag-org-dosage" class="font-medium text-white">2.5 L/ha in 250L water carrier</span>
+                      </div>
+                    </div>
+                    <div class="text-xs text-emerald-100/90 space-y-1">
+                      <div><strong class="text-emerald-300">Mode of Action:</strong> <span id="diag-org-mech">Competitively colonizes leaf surface and inhibits spore germ tubes.</span></div>
+                      <div><strong class="text-emerald-300">Application:</strong> <span id="diag-org-method">Foliar misting via electrostatic drone or low-drift boom nozzle (Repeat every 7-10 days).</span></div>
+                    </div>
+                  </div>
+
+                  <!-- 2. Chemical Treatment Card -->
+                  <div id="diag-card-chemical" class="p-4 rounded-2xl bg-gradient-to-br from-cyan-950/60 to-slate-900/60 border border-cyan-700/50 space-y-2.5 relative">
+                    <div class="flex items-center justify-between">
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                        <i data-lucide="flask-conical" class="w-3 h-3 text-cyan-400"></i>
+                        CONVENTIONAL CHEMICAL PROTOCOL
+                      </span>
+                      <span class="text-[10px] font-mono text-cyan-400 font-semibold">Curative Rapid Arrest</span>
+                    </div>
+                    <div class="text-sm font-bold text-white" id="diag-chem-name">
+                      Translaminar Quinone Outside &amp; Sterol Demethylation Inhibitor
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-cyan-200">
+                      <div class="p-2 rounded-xl bg-cyan-950/50 border border-cyan-800/40">
+                        <span class="text-[10px] text-cyan-400 font-semibold block uppercase">Active Ingredient</span>
+                        <span id="diag-chem-agent" class="font-medium text-white">Azoxystrobin + Difenoconazole</span>
+                      </div>
+                      <div class="p-2 rounded-xl bg-cyan-950/50 border border-cyan-800/40">
+                        <span class="text-[10px] text-cyan-400 font-semibold block uppercase">Commercial Trade Ref</span>
+                        <span id="diag-chem-trade" class="font-medium text-white">Quadris Top / Amistar Gold</span>
+                      </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-[11px] text-cyan-200">
+                      <div class="p-1.5 rounded-lg bg-cyan-950/40 border border-cyan-800/30">
+                        <strong class="text-cyan-400">Pre-Harvest Interval (PHI):</strong> <span id="diag-chem-phi">14 Days</span>
+                      </div>
+                      <div class="p-1.5 rounded-lg bg-cyan-950/40 border border-cyan-800/30">
+                        <strong class="text-cyan-400">Re-Entry Interval (REI):</strong> <span id="diag-chem-rei">12 Hours</span>
+                      </div>
+                    </div>
+                    <div class="text-xs text-amber-200/90 p-2 rounded-xl bg-amber-950/30 border border-amber-800/40">
+                      <strong class="text-amber-400">Safety Advisory:</strong> <span id="diag-chem-safety">Alternate chemistry after 2 sprays to prevent single-site resistance mutations. Maintain 25m aquatic buffer.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Agronomic Prevention Tips -->
+              <div class="space-y-2.5">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-lime-400"></i>
+                  Agronomic Prevention &amp; Soil Practices
+                </h4>
+                <ul id="diag-prevention-list" class="space-y-2 text-xs text-emerald-100">
+                  <!-- Dynamically populated prevention tips -->
+                </ul>
+              </div>
+
+              <!-- 4. IoT Closed-Loop Telemetry Advice -->
+              <div class="p-4 rounded-2xl bg-[#021d13] border border-emerald-700/50 space-y-2">
+                <div class="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
+                  <i data-lucide="radio" class="w-3.5 h-3.5 text-cyan-400"></i>
+                  Closed-Loop IoT Sensor &amp; Valve Advice
+                </div>
+                <div class="text-xs text-emerald-200/90 space-y-1">
+                  <div><strong class="text-white">Valve Schedule:</strong> <span id="diag-telemetry-irrigation">Switch irrigation from evening to early morning (05:00 - 08:00).</span></div>
+                  <div><strong class="text-white">Sensor Threshold:</strong> <span id="diag-telemetry-threshold">Interlock valve to halt flow when canopy sensor > 80% RH.</span></div>
+                  <div><strong class="text-white">Optimal Targets:</strong> <span id="diag-telemetry-band" class="font-mono text-emerald-300">Moisture: 42-46% | Temp: 22-25°C</span></div>
+                </div>
+              </div>
+
+              <!-- Database Logging Status Chip & Action Buttons -->
+              <div class="space-y-3 pt-2 border-t border-emerald-800/40">
+                <div id="diag-db-logged-chip" class="flex items-center justify-between text-[11px] p-2 rounded-xl bg-emerald-950/60 border border-emerald-700/40 text-emerald-300">
+                  <span class="flex items-center gap-1.5 font-mono">
+                    <i data-lucide="database" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span id="diag-db-status-text">Logged to SQLite against User ID #1</span>
+                  </span>
+                  <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono">PERSISTED</span>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" id="diag-download-btn" class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 font-bold text-xs hover:opacity-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
+                    <i data-lucide="file-down" class="w-4 h-4"></i>
+                    <span>Export Full Agronomic Prescription</span>
+                  </button>
+                  <button type="button" id="diag-reset-btn" class="py-3 px-4 rounded-xl bg-emerald-950/60 text-emerald-300 hover:text-white hover:bg-emerald-900/60 border border-emerald-800/40 font-semibold text-xs transition-colors flex items-center justify-center gap-1.5">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    <span>New Audit</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini Card: Recent Problem Query History (Fetched from SQLite) -->
+          <div class="glass-card p-5 rounded-3xl border border-emerald-500/20 space-y-3">
+            <div class="flex items-center justify-between text-xs font-semibold text-emerald-300">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="history" class="w-3.5 h-3.5 text-emerald-400"></i>
+                Recent Farm Diagnoses
+              </span>
+              <span id="diag-history-count" class="text-[10px] font-mono text-emerald-400/80 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800/40">
+                0 Recorded
+              </span>
+            </div>
+            <div id="diag-recent-list" class="space-y-2 text-xs">
+              <div class="text-[11px] text-emerald-300/50 italic py-2 text-center">
+                Submit a problem above to start your field diagnostic history log.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY ARCHITECTURE / HOW IT WORKS -->
+    <section id="technology" class="max-w-7xl mx-auto px-6 sm:px-8 py-20">
+      <div class="reveal-up text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-xs font-semibold text-emerald-400">
+          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+          Autonomous Architecture
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold font-heading text-white tracking-tight">
+          How EcoHarvest Powers the Living Field
+        </h2>
+        <p class="text-sm sm:text-base text-emerald-200/80">
+          From wireless edge sensors deep in the soil to cloud-based neural networks and autonomous irrigation gates.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <!-- Step 1 -->
+        <div class="glass-card p-6 rounded-3xl space-y-4 border border-emerald-500/20 relative">
+          <div class="text-xs font-mono font-bold text-emerald-400/70">PHASE // 01</div>
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-300">
+            <i data-lucide="radio" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white">Subsurface Sensing</h3>
+          <p class="text-xs text-emerald-200/70 leading-relaxed">
+            Long-range LoRaWAN soil probes deployed every 10 hectares continuously stream moisture, salinity, and temperature from multiple depths.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card p-6 rounded-3xl space-y-4 border border-emerald-500/20 relative">
+          <div class="text-xs font-mono font-bold text-emerald-400/70">PHASE // 02</div>
+          <div class="w-12 h-12 rounded-xl bg-lime-500/20 flex items-center justify-center text-lime-300">
+            <i data-lucide="orbit" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white">Aerial &amp; Satellite Fusion</h3>
+          <p class="text-xs text-emerald-200/70 leading-relaxed">
+            Sentinel-2 satellite feeds pair with autonomous drone passes to construct complete NDVI &amp; NDRE vegetative health maps across whole acreages.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card p-6 rounded-3xl space-y-4 border border-emerald-500/20 relative">
+          <div class="text-xs font-mono font-bold text-emerald-400/70">PHASE // 03</div>
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-300">
+            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white">Neural Net Modeling</h3>
+          <p class="text-xs text-emerald-200/70 leading-relaxed">
+            EcoHarvest AI compares live soil metrics against historical weather patterns and crop growth curve algorithms to generate optimal prescription maps.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card p-6 rounded-3xl space-y-4 border border-emerald-500/20 relative">
+          <div class="text-xs font-mono font-bold text-emerald-400/70">PHASE // 04</div>
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-300">
+            <i data-lucide="gauge" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold font-heading text-white">Closed-Loop Actuation</h3>
+          <p class="text-xs text-emerald-200/70 leading-relaxed">
+            Smart valves, fertigation pumps, and autonomous sprayers execute precision actions with zero manual labor, delivering millimeter-level dosing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS & CASE STUDIES -->
+    <section id="testimonials" class="max-w-7xl mx-auto px-6 sm:px-8 py-20">
+      <div class="reveal-up text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-xs font-semibold text-emerald-400">
+          <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+          Grower Experiences
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold font-heading text-white tracking-tight">
+          Trusted by Next-Generation Farmers
+        </h2>
+        <p class="text-sm sm:text-base text-emerald-200/80">
+          Hear how agricultural leaders transitioned to precision autonomy without replacing their core machinery.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="glass-card glass-card-hover p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-emerald-500/20">
+          <div class="space-y-4">
+            <div class="flex text-amber-400 gap-1">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            </div>
+            <p class="text-sm text-emerald-100/90 leading-relaxed italic">
+              "We faced catastrophic water restrictions across our 1,200 acres of almonds. EcoHarvest's micro-pulse irrigation cut our water bill by 38% while boosting our harvest grade to premium export status."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-emerald-800/40 flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-emerald-700 flex items-center justify-center font-bold text-white text-sm">
+              ML
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Marcus Lindqvist</h4>
+              <p class="text-xs text-emerald-300/70">Valley Crest Orchards, California</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="glass-card glass-card-hover p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-emerald-500/20">
+          <div class="space-y-4">
+            <div class="flex text-amber-400 gap-1">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            </div>
+            <p class="text-sm text-emerald-100/90 leading-relaxed italic">
+              "The drone scouting algorithm flagged a severe early-stage root rot outbreak in Sector 4 days before symptoms appeared on the leaves. That single alert saved over $180,000 worth of premium wine grapes."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-emerald-800/40 flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-lime-700 flex items-center justify-center font-bold text-white text-sm">
+              EC
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Elena Castiglione</h4>
+              <p class="text-xs text-emerald-300/70">TerraVerde Viticulture, Tuscany</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="glass-card glass-card-hover p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-emerald-500/20">
+          <div class="space-y-4">
+            <div class="flex text-amber-400 gap-1">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            </div>
+            <p class="text-sm text-emerald-100/90 leading-relaxed italic">
+              "The carbon credit reporting made onboarding our regenerative soil practices seamless. We monetized our cover crops and earned over $42,000 in certified carbon credits in our first harvest season."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-emerald-800/40 flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-cyan-700 flex items-center justify-center font-bold text-white text-sm">
+              DH
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white">David Henderson</h4>
+              <p class="text-xs text-emerald-300/70">Prairie Biofarms Cooperative, Iowa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION & NEWSLETTER BANNER -->
+    <section class="max-w-7xl mx-auto px-6 sm:px-8 py-20">
+      <div class="reveal-up rounded-3xl p-8 sm:p-14 bg-gradient-to-r from-emerald-900/80 via-[#043324]/90 to-emerald-950/90 border border-emerald-500/40 shadow-2xl relative overflow-hidden text-center space-y-8">
+        <div class="max-w-3xl mx-auto space-y-4">
+          <h2 class="text-3xl sm:text-5xl font-extrabold font-heading text-white">
+            Ready to Transition to Autonomous Smart Agriculture?
+          </h2>
+          <p class="text-base sm:text-lg text-emerald-200/80">
+            Join hundreds of forward-thinking growers. Book a dedicated field assessment or receive weekly AgTech research digests.
+          </p>
+        </div>
+
+        <!-- Newsletter & Pilot Action -->
+        <div class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3 items-center justify-center">
+          <form id="newsletter-form" class="w-full flex flex-col sm:flex-row gap-3">
+            <input type="email" required placeholder="Enter your business email..." class="flex-1 bg-[#02180f] border border-emerald-600/50 rounded-xl px-5 py-3.5 text-sm text-white focus:outline-none focus:border-emerald-400">
+            <button type="submit" class="px-6 py-3.5 rounded-xl bg-emerald-400 text-slate-950 font-bold text-sm hover:bg-emerald-300 transition-colors whitespace-nowrap">
+              Subscribe to Insights
+            </button>
+          </form>
+        </div>
+
+        <div class="pt-2">
+          <button class="open-demo-modal inline-flex items-center gap-2 text-xs font-semibold text-emerald-300 hover:text-white underline underline-offset-4">
+            <span>Or schedule an on-site IoT hardware deployment demonstration</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-emerald-900/50 bg-[#020e0a] text-emerald-300/70 pt-16 pb-12 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-900/40">
+        <!-- Col 1: Bio -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-lime-500 flex items-center justify-center text-slate-950 shadow-md">
+              <i data-lucide="sprout" class="w-5 h-5"></i>
+            </div>
+            <span class="text-xl font-bold font-heading text-white">EcoHarvest</span>
+          </div>
+          <p class="text-xs text-emerald-300/70 leading-relaxed max-w-sm">
+            Empowering modern agriculture with cutting-edge sensor telemetry, AI agronomist intelligence, and certified carbon offset quantification.
+          </p>
+          <div class="flex items-center gap-3 text-emerald-400 pt-1">
+            <a href="#" class="p-2 rounded-lg bg-emerald-950/60 hover:text-white transition-colors" aria-label="Twitter / X"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            <a href="#" class="p-2 rounded-lg bg-emerald-950/60 hover:text-white transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+            <a href="#" class="p-2 rounded-lg bg-emerald-950/60 hover:text-white transition-colors" aria-label="GitHub"><i data-lucide="github" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Solutions -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Solutions</h4>
+          <ul class="text-xs space-y-2">
+            <li><a href="#solutions" class="hover:text-emerald-400 transition-colors">Precision Micro-Irrigation</a></li>
+            <li><a href="#solutions" class="hover:text-emerald-400 transition-colors">Drone Multispectral Scouting</a></li>
+            <li><a href="#solutions" class="hover:text-emerald-400 transition-colors">Regenerative Soil Health</a></li>
+            <li><a href="#solutions" class="hover:text-emerald-400 transition-colors">CEA Smart Greenhouses</a></li>
+            <li><a href="#solutions" class="hover:text-emerald-400 transition-colors">Carbon MRV Auditing</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Platform -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Platform</h4>
+          <ul class="text-xs space-y-2">
+            <li><a href="#telemetry" class="hover:text-emerald-400 transition-colors">Live Field Dashboard</a></li>
+            <li><a href="#calculator" class="hover:text-emerald-400 transition-colors">EcoImpact ROI Calculator</a></li>
+            <li><a href="#technology" class="hover:text-emerald-400 transition-colors">Hardware Architecture</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">API &amp; Farm ERP Sync</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Security &amp; LoRaWAN Specs</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Certifications & Trust -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white">Compliance</h4>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center gap-2 text-emerald-400 font-medium">
+              <i data-lucide="award" class="w-4 h-4"></i> ISO 14001 Certified
+            </div>
+            <div class="flex items-center gap-2 text-emerald-400 font-medium">
+              <i data-lucide="check-check" class="w-4 h-4"></i> Verra Carbon Aligned
+            </div>
+            <div class="flex items-center gap-2 text-emerald-400 font-medium">
+              <i data-lucide="shield" class="w-4 h-4"></i> USDA Organic Tech Partner
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-emerald-300/50">
+        <div>&copy; 2026 EcoHarvest Technologies Inc. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-emerald-400 transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-emerald-400 transition-colors">Agronomic Disclaimers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DEMO REQUEST MODAL -->
+  <div id="demo-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-card max-w-lg w-full p-7 sm:p-8 rounded-3xl border border-emerald-400/40 shadow-2xl relative space-y-6">
+      <!-- Close Button -->
+      <button id="close-demo-modal" class="absolute top-5 right-5 text-emerald-400 hover:text-white p-2 rounded-lg hover:bg-emerald-900/40" aria-label="Close modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-semibold text-emerald-400">
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+          Complimentary Field Pilot
+        </div>
+        <h3 class="text-2xl font-bold font-heading text-white">Schedule an EcoHarvest Demo</h3>
+        <p class="text-xs text-emerald-200/70">
+          Speak with our certified agronomists to receive a custom satellite viability assessment for your acreage.
+        </p>
+      </div>
+
+      <form id="demo-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Full Name</label>
+          <input type="text" required placeholder="e.g. Sarah Jenkins" class="w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-400">
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Farm / Enterprise Name</label>
+          <input type="text" required placeholder="e.g. GreenMeadow Ag Ventures" class="w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-400">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-emerald-200 mb-1">Work Email</label>
+            <input type="email" required placeholder="name@farm.com" class="w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-400">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-emerald-200 mb-1">Approx. Acreage</label>
+            <input type="number" required min="10" placeholder="e.g. 500" class="w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-400">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Primary Crop Type</label>
+          <select class="w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-400">
+            <option>Row Crops (Corn, Soy, Wheat)</option>
+            <option>Tree Nuts &amp; Fruit Orchards</option>
+            <option>Vegetables &amp; High-Value Greens</option>
+            <option>Vineyards &amp; Berries</option>
+            <option>Indoor / CEA Greenhouse</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 font-bold text-sm hover:opacity-95 transition-all flex items-center justify-center gap-2">
+          <span>Confirm Field Pilot Request</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION MODAL (PROFESSIONAL SIGN IN / SIGN UP) -->
+  <div id="auth-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
+    <div id="auth-modal-card" class="glass-card max-w-lg w-full my-auto p-6 sm:p-8 rounded-3xl border border-emerald-400/40 shadow-2xl relative space-y-4">
+      
+      <!-- Top Action Bar: Mode Toggle, Full-Screen Link & Close Button -->
+      <div class="flex items-center justify-between pb-3 border-b border-emerald-800/40">
+        <div class="flex items-center gap-2">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Farm Portal</span>
+          </div>
+          <a href="auth.html" target="_blank" class="text-[11px] font-semibold text-emerald-300 hover:text-white flex items-center gap-1 hover:underline ml-1" title="Open full-screen auth portal">
+            <i data-lucide="external-link" class="w-3 h-3"></i>
+            <span>Full Portal</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Modal Theme Toggle -->
+          <button id="modal-theme-toggle" type="button" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-950/80 text-emerald-300 hover:text-white border border-emerald-700/50 flex items-center gap-1 transition-colors cursor-pointer" aria-label="Toggle theme">
+            <i id="modal-theme-icon" data-lucide="sun" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span id="modal-theme-text" class="text-[10px]">Light Mode</span>
+          </button>
+          <!-- Close Button -->
+          <button id="close-auth-modal" class="text-emerald-400 hover:text-white p-1.5 rounded-lg hover:bg-emerald-900/40 transition-colors cursor-pointer" aria-label="Close authentication modal">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Auth Header -->
+      <div class="text-center space-y-1">
+        <h3 id="auth-modal-title" class="text-2xl sm:text-3xl font-bold font-heading text-white">Access Your Farm Account</h3>
+        <p id="auth-modal-desc" class="text-xs text-emerald-200/75">Sign in to control your smart irrigation and live telemetry.</p>
+      </div>
+
+      <!-- Auth Tabs: Sign In / Create Account -->
+      <div class="flex rounded-xl bg-[#02180f] p-1 border border-emerald-800/40">
+        <button id="auth-tab-signin" class="auth-tab-btn active flex-1 py-2 rounded-lg text-xs font-bold transition-all border border-transparent cursor-pointer">
+          Sign In
+        </button>
+        <button id="auth-tab-signup" class="auth-tab-btn flex-1 py-2 rounded-lg text-xs font-bold text-emerald-300/70 hover:text-emerald-200 transition-all border border-transparent cursor-pointer">
+          Create Account
+        </button>
+      </div>
+
+      <!-- Social Logins (Google, GitHub, Apple) -->
+      <div class="space-y-3">
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" class="modal-social-btn py-2 px-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/70 border border-emerald-700/40 hover:border-emerald-500 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer" data-provider="Google">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Google</span>
+          </button>
+          <button type="button" class="modal-social-btn py-2 px-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/70 border border-emerald-700/40 hover:border-emerald-500 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer" data-provider="GitHub">
+            <svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>GitHub</span>
+          </button>
+          <button type="button" class="modal-social-btn py-2 px-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/70 border border-emerald-700/40 hover:border-emerald-500 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer" data-provider="Apple">
+            <svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.63 1.35-.56.65-1.05 1.72-.92 2.74 1.01.08 2.03-.5 2.62-1.24z"/>
+            </svg>
+            <span>Apple</span>
+          </button>
+        </div>
+
+        <div class="relative flex items-center justify-center">
+          <div class="w-full border-t border-emerald-800/40"></div>
+          <span class="absolute px-2.5 text-[10px] font-mono uppercase tracking-wider bg-[#02180f] text-emerald-400/80 rounded-full border border-emerald-800/40">
+            Or With Email
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Demo Account Shortcut (Sign In Only) -->
+      <div id="demo-account-hint" class="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-700/40 flex items-center justify-between gap-2">
+        <div class="text-[11px] text-emerald-200">
+          <span class="font-bold text-emerald-400">Demo User:</span> Dr. Sarah Jenkins (1,250 Acres)
+        </div>
+        <button id="fill-demo-credentials-btn" class="px-2.5 py-1 text-[11px] font-bold text-slate-950 bg-gradient-to-r from-emerald-400 to-lime-400 rounded-lg hover:opacity-90 transition-opacity cursor-pointer">
+          1-Click Login
+        </button>
+      </div>
+
+      <!-- Error / Success Alert Container -->
+      <div id="auth-alert" class="hidden p-3 rounded-xl text-xs font-medium border"></div>
+
+      <!-- SIGN IN FORM -->
+      <form id="signin-form" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Grower / Enterprise Email</label>
+          <div class="relative">
+            <input id="signin-email" type="email" required placeholder="demo@ecoharvest.io" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2.5 pl-10 text-sm text-white focus:outline-none">
+            <i data-lucide="mail" class="w-4 h-4 text-emerald-400/80 absolute left-3.5 top-3"></i>
+          </div>
+          <p id="modal-signin-email-err" class="text-[11px] text-rose-400 hidden pt-0.5"></p>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="block text-xs font-medium text-emerald-200">Password</label>
+            <a href="#" id="forgot-password-link" class="text-[11px] text-emerald-400 hover:underline">Forgot password?</a>
+          </div>
+          <div class="relative">
+            <input id="signin-password" type="password" required placeholder="••••••••" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2.5 pl-10 pr-10 text-sm text-white focus:outline-none">
+            <i data-lucide="lock" class="w-4 h-4 text-emerald-400/80 absolute left-3.5 top-3"></i>
+            <button type="button" class="toggle-password-visibility absolute right-3 top-2.5 text-emerald-400/70 hover:text-emerald-300 cursor-pointer p-0.5" aria-label="Toggle password visibility">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 pt-0.5">
+          <input id="signin-remember" type="checkbox" checked class="rounded bg-[#02180f] border-emerald-700 text-emerald-500 focus:ring-0">
+          <label for="signin-remember" class="text-xs text-emerald-200 cursor-pointer">Keep me logged in on this browser</label>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 font-bold text-sm hover:opacity-95 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/25">
+          <span>Sign In to Dashboard</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+      <!-- SIGN UP FORM (Initially Hidden) -->
+      <form id="signup-form" class="hidden space-y-3">
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Full Name</label>
+          <div class="relative">
+            <input id="signup-name" type="text" required placeholder="e.g. Marcus Vance" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2 pl-9 text-sm text-white focus:outline-none">
+            <i data-lucide="user" class="w-4 h-4 text-emerald-400/80 absolute left-3 top-2.5"></i>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-emerald-200 mb-1">Farm / Enterprise</label>
+            <input id="signup-farm" type="text" required placeholder="Ridgeview Farms" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-3 py-2 text-sm text-white focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-emerald-200 mb-1">Acreage</label>
+            <input id="signup-acres" type="number" min="1" required placeholder="850" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-3 py-2 text-sm text-white focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Work Email</label>
+          <div class="relative">
+            <input id="signup-email" type="email" required placeholder="farmer@ridgeview.com" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2 pl-9 text-sm text-white focus:outline-none">
+            <i data-lucide="mail" class="w-4 h-4 text-emerald-400/80 absolute left-3 top-2.5"></i>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Create Secure Password</label>
+          <div class="relative">
+            <input id="signup-password" type="password" required placeholder="Min. 8 characters" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2 pl-9 pr-9 text-sm text-white focus:outline-none">
+            <i data-lucide="lock" class="w-4 h-4 text-emerald-400/80 absolute left-3 top-2.5"></i>
+            <button type="button" class="toggle-password-visibility absolute right-3 top-2.5 text-emerald-400/70 hover:text-emerald-300 cursor-pointer p-0.5" aria-label="Toggle password visibility">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <!-- Strength bar & checklist -->
+          <div class="mt-1.5 flex items-center gap-2">
+            <div class="flex-1 bg-emerald-950 rounded-full h-1.5 overflow-hidden">
+              <div id="password-strength-meter" class="strength-bar weak"></div>
+            </div>
+            <span id="password-strength-label" class="text-[10px] text-emerald-300 font-mono">Weak</span>
+          </div>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div>
+          <label class="block text-xs font-medium text-emerald-200 mb-1">Confirm Password</label>
+          <div class="relative">
+            <input id="signup-confirm-password" type="password" required placeholder="Re-enter password" class="auth-input w-full bg-[#02180f] border border-emerald-700/50 rounded-xl px-4 py-2 pl-9 pr-9 text-sm text-white focus:outline-none">
+            <i data-lucide="shield" class="w-4 h-4 text-emerald-400/80 absolute left-3 top-2.5"></i>
+            <button type="button" class="toggle-password-visibility absolute right-3 top-2.5 text-emerald-400/70 hover:text-emerald-300 cursor-pointer p-0.5" aria-label="Toggle confirm password visibility">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <p id="modal-confirm-status" class="text-[11px] hidden pt-0.5 font-medium"></p>
+        </div>
+
+        <div class="flex items-start gap-2 pt-1">
+          <input id="signup-terms" type="checkbox" required class="mt-0.5 rounded bg-[#02180f] border-emerald-700 text-emerald-500 focus:ring-0">
+          <label for="signup-terms" class="text-[11px] text-emerald-200 leading-snug cursor-pointer">
+            I agree to the <a href="#" class="text-emerald-400 underline">Telemetry Service Terms</a> and AgData Privacy Protocol.
+          </label>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-lime-500 text-slate-950 font-bold text-sm hover:opacity-95 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/25">
+          <span>Create Account &amp; Provision Farm</span>
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- RESTRICTED GROWER DASHBOARD VIEW (ACCESSIBLE ONLY AFTER AUTHENTICATION) -->
+  <div id="grower-dashboard" class="dashboard-closed fixed inset-0 z-50 bg-[#02130d] overflow-y-auto text-emerald-50">
+    <!-- Dashboard Top Bar -->
+    <header class="sticky top-0 z-20 glass-card border-b border-emerald-500/20 px-6 sm:px-10 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-lime-500 flex items-center justify-center text-slate-950 shadow-md">
+          <i data-lucide="sprout" class="w-6 h-6 stroke-[2.2]"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-bold font-heading text-white">EcoHarvest Farm Operations Console</h1>
+            <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              RESTRICTED GROWER ACCESS
+            </span>
+          </div>
+          <p id="dashboard-farm-subtitle" class="text-xs text-emerald-300/80">GreenMeadow Biofarms &bull; 1,250 Acres Monitored &bull; LoRaWAN Gateway Online</p>
+        </div>
+      </div>
+
+      <!-- Dashboard Actions -->
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+        <!-- Live weather mini chip -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/60 border border-emerald-800/40 text-xs text-emerald-200">
+          <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>24.2°C Clear &bull; Wind 8 km/h NW</span>
+        </div>
+
+        <!-- AI Crop Diagnostics shortcut -->
+        <button id="dashboard-open-diagnostics-btn" class="px-3 py-2 rounded-xl bg-lime-500/20 hover:bg-lime-500/30 border border-lime-500/40 text-lime-300 text-xs font-semibold flex items-center gap-1.5 transition-colors">
+          <i data-lucide="microscope" class="w-3.5 h-3.5 text-lime-400"></i>
+          <span>Diagnose Field Problem</span>
+        </button>
+
+        <!-- Return to Public Site Button -->
+        <button id="dashboard-exit-btn" class="px-3.5 py-2 rounded-xl glass-card text-emerald-200 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span>Public Website</span>
+        </button>
+
+        <!-- Sign Out Button -->
+        <button id="dashboard-logout-btn" class="px-3.5 py-2 rounded-xl bg-rose-950/50 hover:bg-rose-900/60 border border-rose-800/50 text-rose-300 text-xs font-semibold flex items-center gap-1.5 transition-colors">
+          <i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-400"></i>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Main Container -->
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 py-8 space-y-8">
+      <!-- Welcome Banner -->
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/80 via-[#032a1d]/80 to-emerald-950/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div class="space-y-1.5">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            ALL SYSTEMS OPERATIONAL &bull; 99.8% TELEMETRY SYNC
+          </div>
+          <h2 id="dashboard-welcome-heading" class="text-2xl sm:text-3xl font-bold font-heading text-white">
+            Welcome back, Dr. Sarah Jenkins!
+          </h2>
+          <p class="text-xs sm:text-sm text-emerald-200/80 max-w-xl">
+            Real-time subsurface moisture levels are within optimal vegetative equilibrium. Falcon-7 drone is scheduled for its next automated scouting pass in 2h 15m.
+          </p>
+        </div>
+
+        <button id="trigger-drone-pass-btn" class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-lime-400 text-slate-950 font-bold text-xs shadow-lg hover:scale-105 transition-transform flex items-center gap-2 whitespace-nowrap">
+          <i data-lucide="plane" class="w-4 h-4"></i>
+          <span>Launch Priority Drone Pass</span>
+        </button>
+      </div>
+
+      <!-- Dashboard 4 KPI Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- KPI 1 -->
+        <div class="glass-card p-5 rounded-2xl border border-emerald-500/20 space-y-2">
+          <div class="flex justify-between items-center text-xs text-emerald-300/80">
+            <span>Cultivated Area</span>
+            <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div id="dashboard-kpi-acres" class="text-2xl sm:text-3xl font-bold font-heading text-white">1,250 Acres</div>
+          <div class="text-[11px] text-emerald-400 flex items-center gap-1">
+            <i data-lucide="check" class="w-3 h-3"></i> 100% Multispectral Grid
+          </div>
+        </div>
+
+        <!-- KPI 2 -->
+        <div class="glass-card p-5 rounded-2xl border border-emerald-500/20 space-y-2">
+          <div class="flex justify-between items-center text-xs text-emerald-300/80">
+            <span>Connected IoT Probes</span>
+            <i data-lucide="wifi" class="w-4 h-4 text-cyan-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-bold font-heading text-white">64 / 64 Nodes</div>
+          <div class="text-[11px] text-cyan-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> LoRaWAN 915MHz Active
+          </div>
+        </div>
+
+        <!-- KPI 3 -->
+        <div class="glass-card p-5 rounded-2xl border border-emerald-500/20 space-y-2">
+          <div class="flex justify-between items-center text-xs text-emerald-300/80">
+            <span>Water Conserved MTD</span>
+            <i data-lucide="droplet" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-bold font-heading text-emerald-300">428,000 Gal</div>
+          <div class="text-[11px] text-emerald-400 flex items-center gap-1">
+            <i data-lucide="trending-down" class="w-3 h-3"></i> -42% vs Traditional Drip
+          </div>
+        </div>
+
+        <!-- KPI 4 -->
+        <div class="glass-card p-5 rounded-2xl border border-emerald-500/20 space-y-2">
+          <div class="flex justify-between items-center text-xs text-emerald-300/80">
+            <span>Est. Carbon Revenue</span>
+            <i data-lucide="coins" class="w-4 h-4 text-amber-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-bold font-heading text-amber-300">$35,000</div>
+          <div class="text-[11px] text-amber-400 flex items-center gap-1">
+            <i data-lucide="shield-check" class="w-3 h-3"></i> Verra Standard Verified
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Interactive Station Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Left 7 Cols: Actuator Controls & Interactive Valves -->
+        <div class="lg:col-span-7 glass-card p-6 sm:p-7 rounded-3xl border border-emerald-500/25 space-y-6">
+          <div class="flex justify-between items-center pb-4 border-b border-emerald-800/40">
+            <div>
+              <h3 class="text-lg font-bold font-heading text-white">Smart Solenoid Valve Control Matrix</h3>
+              <p class="text-xs text-emerald-300/70">Actuate micro-pulse irrigation lines directly across farm sectors.</p>
+            </div>
+            <span class="text-xs px-2.5 py-1 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-700/50 font-mono">
+              GATEWAY #01
+            </span>
+          </div>
+
+          <!-- Valve Zones List -->
+          <div class="space-y-4">
+            <!-- Zone 1 -->
+            <div class="p-4 rounded-2xl bg-[#021c13] border border-emerald-800/40 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <h4 class="text-sm font-bold text-white">Sector Alpha: Sweet Corn &amp; Maize</h4>
+                  <span id="zone-1-status-pill" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-700">
+                    AUTO - MONITORING
+                  </span>
+                </div>
+                <div class="text-xs text-emerald-300/70 flex items-center gap-3">
+                  <span>Moisture: <strong id="zone-1-moist" class="text-emerald-200">42%</strong></span>
+                  <span>Temp: <strong class="text-emerald-200">23.8°C</strong></span>
+                  <span>Pressure: <strong class="text-emerald-200">48 PSI</strong></span>
+                </div>
+              </div>
+              <button id="toggle-valve-zone-1" class="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 border border-emerald-500/40 transition-colors">
+                Trigger 10-Min Pulse
+              </button>
+            </div>
+
+            <!-- Zone 2 -->
+            <div class="p-4 rounded-2xl bg-[#021c13] border border-emerald-800/40 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <h4 class="text-sm font-bold text-white">Sector Beta: Apple &amp; Cherry Orchards</h4>
+                  <span id="zone-2-status-pill" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-700">
+                    FLOW ACTIVE (12 LPM)
+                  </span>
+                </div>
+                <div class="text-xs text-emerald-300/70 flex items-center gap-3">
+                  <span>Moisture: <strong id="zone-2-moist" class="text-emerald-200">38%</strong></span>
+                  <span>Temp: <strong class="text-emerald-200">25.1°C</strong></span>
+                  <span>Pressure: <strong class="text-emerald-200">52 PSI</strong></span>
+                </div>
+              </div>
+              <button id="toggle-valve-zone-2" class="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold bg-rose-950/50 text-rose-300 hover:bg-rose-900/60 border border-rose-700/50 transition-colors">
+                Halt Flow
+              </button>
+            </div>
+
+            <!-- Zone 3 -->
+            <div class="p-4 rounded-2xl bg-[#021c13] border border-emerald-800/40 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <h4 class="text-sm font-bold text-white">Sector Gamma: Bio-Greenhouse Hydroponics</h4>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-950 text-amber-300 border border-amber-700">
+                    CLOSED LOOP OPTIMAL
+                  </span>
+                </div>
+                <div class="text-xs text-emerald-300/70 flex items-center gap-3">
+                  <span>Nutrient EC: <strong class="text-emerald-200">1.8 mS/cm</strong></span>
+                  <span>pH: <strong class="text-emerald-200">6.2</strong></span>
+                  <span>Temp: <strong class="text-emerald-200">22.4°C</strong></span>
+                </div>
+              </div>
+              <button id="toggle-valve-zone-3" class="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 border border-emerald-500/40 transition-colors">
+                Dose Nutrient Pulse
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Real-Time Event Stream / Activity Log -->
+        <div class="lg:col-span-5 glass-card p-6 sm:p-7 rounded-3xl border border-emerald-500/25 space-y-4 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center pb-3 border-b border-emerald-800/40">
+              <h3 class="text-base font-bold font-heading text-white flex items-center gap-2">
+                <i data-lucide="bell" class="w-4 h-4 text-emerald-400"></i>
+                <span>Autonomous Farm Event Log</span>
+              </h3>
+              <span class="text-[11px] text-emerald-400 font-mono">LIVE FEED</span>
+            </div>
+
+            <!-- Logs list -->
+            <div id="dashboard-event-logs" class="space-y-3 pt-3 text-xs">
+              <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/30 space-y-1">
+                <div class="flex justify-between text-emerald-400 font-mono text-[10px]">
+                  <span>EVENT #8491</span>
+                  <span>Just now</span>
+                </div>
+                <p class="text-emerald-100 font-medium">Session authenticated. Telemetry gateway stream synchronized.</p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/30 space-y-1">
+                <div class="flex justify-between text-cyan-400 font-mono text-[10px]">
+                  <span>EVENT #8490</span>
+                  <span>14 mins ago</span>
+                </div>
+                <p class="text-emerald-100 font-medium">Sector Beta root moisture dipped below 39%. Dynamic micro-drip actuated automatically.</p>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/30 space-y-1">
+                <div class="flex justify-between text-lime-400 font-mono text-[10px]">
+                  <span>EVENT #8489</span>
+                  <span>1 hour ago</span>
+                </div>
+                <p class="text-emerald-100 font-medium">Falcon-7 completed full-acreage NDVI mapping. 0 fungal stress detected.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Console Status -->
+          <div class="pt-3 border-t border-emerald-800/40 flex items-center justify-between text-[11px] text-emerald-300/70">
+            <span>Security: 256-bit AES End-to-End</span>
+            <span class="text-emerald-400 font-mono">FW: v4.2.8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Interactive NDVI Canopy Vigour Inspector Modal
+       ========================================================================== -->
+  <div id="ndvi-inspector-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md hidden transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="ndvi-modal-title">
+    <div class="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#021810] border border-emerald-500/40 shadow-2xl shadow-emerald-950/80 p-5 sm:p-8 flex flex-col gap-6">
+      <!-- Modal Header -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-emerald-800/40">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+            <i data-lucide="satellite" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 id="ndvi-modal-title" class="text-lg sm:text-xl font-bold font-heading text-white">Sector A - Canopy Vigour Map</h3>
+              <span id="ndvi-modal-score-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-500/50">
+                NDVI 0.92 • Optimal
+              </span>
+            </div>
+            <p id="ndvi-modal-sub" class="text-xs text-emerald-300/70">Falcon-7 Autonomous Scouting Pass • Multispectral 5-Band Sensor</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Sector Switcher Tabs -->
+          <div class="flex items-center gap-1.5 p-1 rounded-xl bg-emerald-950/80 border border-emerald-800/50">
+            <button class="ndvi-tab-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all bg-emerald-500 text-black shadow" data-target="sec-a">Sec A</button>
+            <button class="ndvi-tab-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all text-emerald-300 hover:text-white" data-target="sec-b">Sec B</button>
+            <button class="ndvi-tab-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all text-emerald-300 hover:text-white" data-target="sec-c">Sec C</button>
+            <button class="ndvi-tab-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold transition-all text-emerald-300 hover:text-white" data-target="sec-d">Sec D</button>
+          </div>
+          <!-- Close Button -->
+          <button id="close-ndvi-modal" class="p-2 rounded-xl text-emerald-400 hover:text-white hover:bg-emerald-900/50 transition-colors" aria-label="Close Inspector">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left 7 Cols: High-Res Animated NDVI Viewport -->
+        <div class="lg:col-span-7 space-y-3">
+          <div class="relative w-full aspect-square max-h-[380px] rounded-2xl overflow-hidden border border-emerald-500/40 bg-black/60 shadow-inner group">
+            <img id="ndvi-modal-img" src="images/sec_a_ndvi.jpg" alt="High Resolution NDVI Satellite Map" class="w-full h-full object-cover transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+            
+            <!-- Animated Drone Scan Beam -->
+            <div id="ndvi-modal-scanner" class="ndvi-scanline scan-a"></div>
+
+            <!-- Precision HUD Overlay -->
+            <div class="ndvi-hud-corner ndvi-hud-tl"></div>
+            <div class="ndvi-hud-corner ndvi-hud-tr"></div>
+            <div class="ndvi-hud-corner ndvi-hud-bl"></div>
+            <div class="ndvi-hud-corner ndvi-hud-br"></div>
+
+            <!-- Drone Crosshairs & Telemetry Stamp -->
+            <div class="absolute top-3 left-3 text-[10px] font-mono text-emerald-300 bg-black/75 px-2 py-1 rounded border border-emerald-500/30 flex items-center gap-1.5 backdrop-blur-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span id="ndvi-modal-gps">GPS: 41.8781° N, 87.6298° W</span>
+            </div>
+            <div class="absolute bottom-3 right-3 text-[10px] font-mono text-lime-400 bg-black/75 px-2 py-1 rounded border border-lime-500/30 backdrop-blur-sm">
+              <span id="ndvi-modal-res">GSD: 1.2 cm/pixel • Nadir 90°</span>
+            </div>
+          </div>
+
+          <!-- NDVI Color Legend Bar -->
+          <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/30 space-y-1.5">
+            <div class="flex justify-between text-[11px] text-emerald-300/80 font-mono">
+              <span>0.0 Bare Soil / Water</span>
+              <span class="text-lime-300 font-bold">Vegetative Health (NDVI Index)</span>
+              <span>1.0 Dense Canopy</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-gradient-to-r from-red-600 via-amber-400 via-lime-400 to-emerald-400 border border-emerald-700/50"></div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Diagnostic Telemetry Metrics -->
+        <div class="lg:col-span-5 space-y-4 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div>
+              <span class="text-xs uppercase tracking-wider font-mono text-emerald-400 font-semibold">Crop &amp; Canopy Profile</span>
+              <h4 id="ndvi-modal-crop" class="text-base font-bold text-white mt-0.5">Zea mays (Maize / Sweetcorn)</h4>
+            </div>
+
+            <!-- Metric Cards 2x2 -->
+            <div class="grid grid-cols-2 gap-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                <span class="text-[11px] text-emerald-300/70">Chlorophyll (SPAD)</span>
+                <div id="ndvi-modal-spad" class="text-base font-mono font-bold text-white mt-0.5">54.2</div>
+                <div class="text-[10px] text-emerald-400 flex items-center gap-1 mt-0.5">
+                  <i data-lucide="trending-up" class="w-3 h-3"></i> +4.1% vs avg
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                <span class="text-[11px] text-emerald-300/70">Canopy Temp</span>
+                <div id="ndvi-modal-temp" class="text-base font-mono font-bold text-white mt-0.5">22.4°C</div>
+                <div class="text-[10px] text-lime-400 flex items-center gap-1 mt-0.5">
+                  <i data-lucide="check" class="w-3 h-3"></i> Transpiration OK
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                <span class="text-[11px] text-emerald-300/70">Estimated Biomass</span>
+                <div id="ndvi-modal-biomass" class="text-base font-mono font-bold text-white mt-0.5">18.4 t/ha</div>
+                <div class="text-[10px] text-emerald-400 flex items-center gap-1 mt-0.5">High Density</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40">
+                <span class="text-[11px] text-emerald-300/70">Soil Moisture Sync</span>
+                <div id="ndvi-modal-moist" class="text-base font-mono font-bold text-white mt-0.5">42.8% VWC</div>
+                <div class="text-[10px] text-cyan-400 flex items-center gap-1 mt-0.5">Valve #04 Active</div>
+              </div>
+            </div>
+
+            <!-- Agronomic Scouting Intelligence Note -->
+            <div class="p-3.5 rounded-2xl bg-[#032014] border border-emerald-700/40 space-y-1">
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-emerald-300">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                <span>Falcon-7 Scouting Diagnostic</span>
+              </div>
+              <p id="ndvi-modal-notes" class="text-xs text-emerald-100/80 leading-relaxed">
+                Dense leaf canopy, uniform chlorophyll distribution. Zero fungal lesions detected by drone multispectral camera.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="pt-3 border-t border-emerald-800/40 flex gap-2">
+            <button id="ndvi-btn-flyover" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold bg-emerald-500 text-black hover:bg-emerald-400 transition-colors flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20">
+              <i data-lucide="scan" class="w-4 h-4"></i>
+              <span>Queue Drone Flyover</span>
+            </button>
+            <button id="ndvi-btn-export" class="py-2.5 px-3 rounded-xl text-xs font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-700/50 hover:bg-emerald-900 transition-colors flex items-center gap-1.5">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>GeoTIFF</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
